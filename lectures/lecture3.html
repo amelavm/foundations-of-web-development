@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>HTML Forms</title>
+   <meta name="keywords" content="HTML, Forms" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+   <h1>HTML Forms</h1>
+
+   <!-- First example -->
+    <form action="/action_page.php">
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname" value="John"><br>
+       
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname" value="Doe"><br><br>
+        
+        <input type="submit" value="Submit">
+    </form> 
+
+   <!-- Text fields -->
+    <form>
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname">
+    </form>
+
+
+    <!-- Radio buttons -->
+    <form>
+        <input type="radio" id="html" name="fav_language" value="HTML">
+        <label for="html">HTML</label><br>
+        <input type="radio" id="css" name="fav_language" value="CSS">
+        <label for="css">CSS</label><br>
+        <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+        <label for="javascript">JavaScript</label>
+    </form>
+
+    <!-- Checkboxes -->
+    <form>
+        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+        <label for="vehicle1"> I have a bike</label><br>
+        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+        <label for="vehicle2"> I have a car</label><br>
+        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+        <label for="vehicle3"> I have a boat</label>
+    </form>
+    
+    <!-- Submit button -->
+    <form action="/action_page.php">
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname" value="John"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname" value="Doe"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <!--Omitting name attribute-->
+    <form action="/action_page.php">
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" value="John"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- Textarea -->
+    <form>
+        <textarea placeholder='Enter comment...' maxlength='1000' minlength='100'>
+          This is the default comment...  
+        </textarea>
+    </form>
+
+    <!-- Fieldset -->
+    <form action="#">
+        <fieldset disabled>
+            <legend>Do you agree?</legend>
+            <input type="checkbox" id="chbx" name="agree" value="Yes!" />
+            <label for="chbx">I agree</label>
+        </fieldset>
+    </form>
+
+    <!-- Fieldset with legend -->
+    <form>
+        <fieldset>
+          <legend>Choose your favorite monster</legend>
+      
+          <input type="radio" id="kraken" name="monster" value="K" />
+          <label for="kraken">Kraken</label><br />
+      
+          <input type="radio" id="sasquatch" name="monster" value="S" />
+          <label for="sasquatch">Sasquatch</label><br />
+      
+          <input type="radio" id="mothman" name="monster" value="M" />
+          <label for="mothman">Mothman</label>
+        </fieldset>
+    </form>
+
+    <!-- Select element -->
+    <form>
+        <select name="choice">
+            <option value="first">First Value</option>
+            <option value="second" selected>Second Value</option>
+            <option value="third">Third Value</option>
+        </select>
+    </form>
+
+    <!-- Select with grouping options -->
+    <form>
+        <select name="foods" id="hr-select">
+            <option value="">Choose a food</option>
+            <hr />
+            <optgroup label="Fruit">
+              <option value="apple">Apples</option>
+              <option value="banana">Bananas</option>
+              <option value="cherry">Cherries</option>
+              <option value="damson">Damsons</option>
+            </optgroup>
+            <hr />
+            <optgroup label="Vegetables">
+              <option value="artichoke">Artichokes</option>
+              <option value="broccoli">Broccoli</option>
+              <option value="cabbage">Cabbages</option>
+            </optgroup>
+            <hr />
+            <optgroup label="Meat">
+              <option value="beef">Beef</option>
+              <option value="chicken">Chicken</option>
+              <option value="pork">Pork</option>
+            </optgroup>
+            <hr />
+            <optgroup label="Fish">
+              <option value="cod">Cod</option>
+              <option value="haddock">Haddock</option>
+              <option value="salmon">Salmon</option>
+              <option value="turbot">Turbot</option>
+            </optgroup>
+          </select>
+    </form>
+
+    <!-- Avanced select example -->
+    <form>
+        <label>
+            Please choose one or more pets:
+            <select name="pets" multiple size="4">
+            <optgroup label="4-legged pets">
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="hamster" disabled>Hamster</option>
+            </optgroup>
+            <optgroup label="Flying pets">
+                <option value="parrot">Parrot</option>
+                <option value="macaw">Macaw</option>
+                <option value="albatross">Albatross</option>
+            </optgroup>
+            </select>
+        </label>
+    </form>
+
+    <!-- Button element -->
+    <form>
+        <button class="favorite styled" type="button">Add to favorites</button>
+    </form>
+
+
+    <!-- Datalist element -->
+    <form>
+        <label for="ice-cream-choice">Choose a flavor:</label>
+        <input list="ice-cream-flavors" id="ice-cream-choice" name="ice-cream-choice" />
+        
+        <datalist id="ice-cream-flavors">
+          <option value="Chocolate"></option>
+          <option value="Coconut"></option>
+          <option value="Mint"></option>
+          <option value="Strawberry"></option>
+          <option value="Vanilla"></option>
+        </datalist>        
+    </form>
+
+    <!-- Date and time types-->
+    <input type="time" list="popularHours" />
+    <datalist id="popularHours">
+        <option value="12:00"></option>
+        <option value="13:00"></option>
+        <option value="14:00"></option>
+    </datalist>
+
+    <!-- Range type -->
+    <label for="tick">Tip amount:</label>
+    <input type="range" list="tickmarks" min="0" max="100" id="tick" name="tick" />
+    <datalist id="tickmarks">
+        <option value="0"></option>
+        <option value="10"></option>
+        <option value="20"></option>
+        <option value="30"></option>
+    </datalist>
+
+    <!-- Color type-->
+    <label for="colors">Pick a color (preferably a red tone):</label>
+    <input type="color" list="redColors" id="colors" />
+    <datalist id="redColors">
+        <option value="#800000"></option>
+        <option value="#8B0000"></option>
+        <option value="#A52A2A"></option>
+        <option value="#DC143C"></option>
+    </datalist>
+
+    <!-- Output element -->
+    <form id="example-form">
+        <input type="range" id="b" name="b" value="50" /> +
+        <input type="number" id="a" name="a" value="10" /> =
+        <output name="result" for="a b">60</output>
+    </form>
+
+</body>
+</html>
