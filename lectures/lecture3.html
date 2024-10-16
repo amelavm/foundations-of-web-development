@@ -142,6 +142,7 @@
     <form>
         <label>
             Please choose one or more pets:
+            <!--Size attribute means that 4 options will be visible to the user-->
             <select name="pets" multiple size="4">
             <optgroup label="4-legged pets">
                 <option value="dog">Dog</option>
@@ -211,6 +212,115 @@
         <input type="number" id="a" name="a" value="10" /> =
         <output name="result" for="a b">60</output>
     </form>
+
+    <script>
+        const form = document.getElementById("example-form");
+        const a = form.elements["a"];
+        const b = form.elements["b"];
+        const result = form.elements["result"];
+
+        function updateResult() {
+        const aValue = parseInt(a.value);
+        const bValue = parseInt(b.value);
+        result.value = aValue + bValue;
+        }
+
+        form.addEventListener("input", updateResult);
+
+        updateResult();
+    </script>
+
+    <!--Submitting form using mock API using POST/GET methods-->
+    <header>
+        <h1>Contact Us</h1>
+    </header>
+    
+    <form action="https://jsonplaceholder.typicode.com/posts" method="POST" id="contact-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+        <br><br>
+        
+        <button type="submit">Submit</button>
+    </form>
+
+    <!--Adding hidden fields-->
+    <form action="https://jsonplaceholder.typicode.com/posts" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+    
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+    
+        <input type="hidden" name="userId" value="1">
+        <button type="submit">Submit</button>
+    </form>
+    
+    <!--Another form example-->
+    <form action="https://jsonplaceholder.typicode.com/posts" method="POST">
+        <label for="title">Post Title:</label>
+        <input type="text" id="title" name="title" required><br><br>
+    
+        <label for="body">Post Body:</label><br>
+        <textarea id="body" name="body" rows="4" cols="50" required></textarea><br><br>
+    
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+    
+        <input type="hidden" name="userId" value="1">
+    
+        <input type="hidden" name="category" value="Technology">
+    
+        <input type="hidden" name="authToken" value="abcd1234-securetoken">
+    
+        <input type="hidden" name="status" value="draft">
+    
+        <button type="submit">Submit Post</button>
+    </form>
+
+    <!--Another form example, with radio buttons and checkboxes-->
+    <form action="https://jsonplaceholder.typicode.com/posts" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+
+        <label>Choose your subscription plan:</label><br>
+        <input type="radio" id="free-plan" name="plan" value="Free" required>
+        <label for="free-plan">Free Plan</label><br>
+        
+        <input type="radio" id="pro-plan" name="plan" value="Pro" required>
+        <label for="pro-plan">Pro Plan</label><br>
+
+        <input type="radio" id="premium-plan" name="plan" value="Premium" required>
+        <label for="premium-plan">Premium Plan</label><br><br>
+
+        <label>Select your interests:</label><br>
+        <input type="checkbox" id="tech" name="interests" value="Technology">
+        <label for="tech">Technology</label><br>
+        
+        <input type="checkbox" id="music" name="interests" value="Music">
+        <label for="music">Music</label><br>
+        
+        <input type="checkbox" id="sports" name="interests" value="Sports">
+        <label for="sports">Sports</label><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+
+
+    
 
 </body>
 </html>
