@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Center Ticket Form</title>
+</head>
+<body>
+    <h1 style= "text-align: center; color: green;margin-bottom: auto;" >IT Center Ticket Form</h1>
+
+    <hr style="background-color: grey;">
+    <div style= "margin-left:560px; font-size: large;">
+        
+    <form action="/submit-ticket.php" method="POST" enctype="multipart/form-data">
+        <label for="problem_type">Type of Problem:</label>
+        <select id="problem_type" name="problem_type" required>
+            <option value="cv_creator_tool">CV Creator Tool</option>
+            <option value="data_privacy_concerns">Data Privacy Concerns</option>
+            <option value="help_guidance" selected>Help & Guidance</option>
+            <option value="file_upload_issues">File Upload Issues</option>
+        </select><br><br>
+
+        <label for="urgency">Select Urgency:</label><br>
+        <input type="radio" id="not_urgent" name="urgency" value="not_urgent">
+        <label for="not_urgent">Not urgent</label><br>
+        
+        <input type="radio" id="mild" name="urgency" value="mild" checked>
+        <label for="mild">Mild</label><br>
+        
+        <input type="radio" id="highly_urgent" name="urgency" value="highly_urgent">
+        <label for="highly_urgent">Highly Urgent</label><br><br>
+
+        <label for="file_upload">Upload a Picture (JPG, JPEG, PNG):</label>
+        <input type="file" id="file_upload" name="file_upload" accept=".jpg,.jpeg,.png" required><br><br>
+
+        <button type="submit" style="margin-left: 70px;padding: 15px 30px; background-color: green; color:aliceblue;font-size: 16px;"><b>Submit Ticket</b></button>
+
+    </form>
+    </div>
+</body>
+</html>

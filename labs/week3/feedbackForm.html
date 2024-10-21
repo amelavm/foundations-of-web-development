@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Creator Tool Feedback Form</title>
+</head>
+<body>
+
+    <h1 style= "text-align: center; color: green;margin-bottom: auto;" >CV Creator Tool Feedback Form</h1>
+
+    <hr style="background-color: grey;">
+    <div style= "margin-left:560px; font-size: large;">
+
+    <form action="/submit-feedback" method="POST">
+        <label for="email"><b>Email:</b></label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+
+
+        <label for="password"><b>Password:</b></label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+
+        <label for="feedback"><b><i>Your Feedback:</i></b></label><br>
+        <textarea id="feedback" name="feedback" rows="4" cols="50" required></textarea>
+        <br><br>
+
+        <label for="source"><u>How did you hear about our CV Creator Tool?</u></label>
+        <select id="source" name="source" required>
+            <option value="facebook">Facebook</option>
+            <option value="linkedin" selected = "selected">LinkedIn</option>
+            <option value="instagram">Instagram</option>
+            <option value="tiktok">TikTok</option>
+            <option value="others">Others</option>
+        </select>
+        <br><br>
+
+        <input type="checkbox" id="newsletter" name="newsletter">
+        <label for="newsletter"><b><u>Sign up for the newsletter</u></b></label>
+        <br><br>
+
+        <p><strong><i>Would you use this CV Creator Tool again?</i></strong> </p>
+        
+        <label for="yes">Yes</label>
+        <input type="radio" id="yes" name="use-again" value="yes" checked="checked" required>
+        <br>
+
+        <label for="no">No</label>
+        <input type="radio" id="no" name="use-again" value="no">
+        
+        <br>
+
+        <label for="maybe">Maybe</label>
+        <input type="radio" id="maybe" name="use-again" value="maybe">
+        <br><br>
+
+        <button type="submit" style="margin-left: 70px;padding: 15px 30px; background-color: green; color:aliceblue;font-size: 16px;"><b>Submit Feedback</b></button>
+
+    </form>
+    </div>
+
+</body>
+</html>

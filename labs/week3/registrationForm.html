@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+
+    <h1 style= "text-align: center; color: green;margin-bottom: auto;" >Registration Form</h1>
+
+    <hr style="background-color: grey;">
+
+    <div style= "margin-left:575px; font-size: large;">
+
+    <form action="/submit" method="POST" >
+
+        <label for="name"><b>Name:</b></label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+     
+
+        <label for="username"><b>Userame:</b></label>
+        <input type="text" id="username" name="username" required>
+        <br><br>
+
+        <label for="email"><b>Email:</b></label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+
+        <label for="password"><b>Password:</b></label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+
+        <label for="age"><b>Age:</b></label>
+        <input type="number" id="age" name="age" value="age" required>
+        <br><br>
+
+        <label for="phone"><b>Phone Number:</b></label>
+        <input type="number" id="phone" name="phone" required>
+        <br><br>
+
+        <label for="gender"><b>Gender:</b></label>
+        <select id="gender" name="gender" required >
+            <option value="male">Male</option>
+            <option value="female" selected="selected">Female</option>
+            <option value="other">Other</option>
+        </select>
+        <br><br>
+
+        <button type="submit" style="margin-left: 70px;padding: 15px 30px; background-color: green; color:aliceblue;font-size: 16px;"><b>Register</b></button>
+    </form>
+</div>
+</body>
+</html>
+

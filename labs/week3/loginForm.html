@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+<body>
+
+    <h1 style= "text-align: center; color: green;margin-bottom: auto;" >Login Form</h1>
+
+    <hr style="background-color: grey;">
+
+    <div style= " margin-left:575px; font-size: large; ">
+    <form action="/submit-login" method="POST">
+        <p><b>Please select your login method:</b></p>
+        <input type="radio" id="username-option" name="login-method" value="username" required>
+        <label for="username-option">Username</label>
+        <br>
+        <input type="radio" id="email-option" name="login-method" value="email" checked="checked">
+        <label for="email-option">Email</label>
+        <br><br>
+
+        <label for="identifier"><b>Username or Email:</b></label>
+        <input type="text" id="identifier" name="identifier" required>
+        <br><br>
+
+        <label for="password"><b>Password:</b></label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+
+        <button type="submit" style="margin-left: 70px;padding: 15px 30px; background-color: green; color:aliceblue;font-size: 16px;"><b>Login</b></button>
+    </form>
+</div>
+
+</body>
+</html>

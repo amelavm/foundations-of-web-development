@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Management Form</title>
+</head>
+<body>
+
+    <h1 style= "text-align: center; color: green;margin-bottom: auto;" >Subscription Management Form</h1>
+
+    <hr style="background-color: grey;">
+    <div style= " font-size: large;">
+
+    <form action="/submit-subscription.php" method="POST">
+        
+
+        <fieldset>
+            <legend>Details</legend>
+            
+            <label for="email"><b><u>Email:</u></b></label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="website"><b><u>Link:</u></b></label>
+            <input type="url" id="website" name="website" required><br><br>
+
+            <label for="password"><b><u>Password:</u></b></label>
+            <input type="password" id="password" name="password" required><br><br>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend>Reasons for Ending Subscription</legend>
+            
+            <label for="reason"><b>Select Reason:</b></label>
+            <select id="reason" name="reason" required>
+                <option value="bad_quality">Bad Quality</option>
+                <option value="small_size">Small Size</option>
+                <option value="other" selected="selected">Other</option>
+            </select><br><br>
+
+            <p><i>Would you use one of our other tools again?</i></p>
+            <input type="radio" id="yes" name="use_other_tools" value="yes" checked="checked">
+            <label for="yes">Yes</label><br>
+            
+            <input type="radio" id="no" name="use_other_tools" value="no">
+            <label for="no">No</label><br>
+            
+            <input type="radio" id="maybe" name="use_other_tools" value="maybe">
+            <label for="maybe">Maybe</label><br><br>
+
+            <label for="comments">Additional Comments:</label><br>
+            <textarea id="comments" name="comments" rows="4" cols="50" placeholder="Your comments..."></textarea><br><br>
+        </fieldset>
+
+        <br>
+
+        <input type="image" src="submit_button_img.png" alt="Submit" style="margin-left: 570px;width:100px;height:50px">
+    </form>
+</body>
+</html>
