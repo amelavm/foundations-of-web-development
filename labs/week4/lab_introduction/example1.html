@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My CV</title>
+  </head>
+  <body>
+    <header>
+      <h1>Hello!</h1>
+      <nav>
+        <ul>
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+        </ul>
+      </nav>
+    </header>
+    <hr />
+    <section id="about">
+      <article>
+        <h2>About Me</h2>
+        <p>
+          Experienced web developer with a passion for creating dynamic web
+          applications.
+        </p>
+      </article>
+    </section>
+    <hr />
+    <section id="experience">
+      <article>
+        <h2>Professional Experience</h2>
+        <p>Software Engineer at XYZ Corp - 2015 to Present</p>
+      </article>
+    </section>
+
+    <hr />
+    <aside id="skills">
+      <h3>Hobbies & Interests</h3>
+      <ul>
+        <li>Coding challenges and hackathons</li>
+        <li>Playing chess</li>
+        <li>Photography</li>
+        <li>Traveling</li>
+      </ul>
+    </aside>
+
+    <hr />
+    <section id="multimedia">
+      <h2>Multimedia Introduction</h2>
+
+      <h3>Watch my Introduction Video</h3>
+      <video width="320" height="240" controls>
+        <source src="intro.mp4" type="video/mp4" />
+        <source src="intro.ogg" type="video/ogg" />
+        Your browser does not support the video tag.
+      </video>
+      <hr />
+      <h3>Listen to my Personal Message</h3>
+      <audio controls>
+        <source src="message.mp3" type="audio/mpeg" />
+        <source src="message.ogg" type="audio/ogg" />
+        Your browser does not support the audio element.
+      </audio>
+    </section>
+    <hr />
+
+    <button onclick="getLocation()">Get My Location</button>
+    <p id="location"></p>
+
+    <canvas id="myCanvas" width="200" height="100"></canvas>
+
+    <footer>
+      <p>Contact: john.doe@example.com</p>
+      <p>© 2024 John Doe</p>
+    </footer>
+
+    <script>
+      const canvas = document.getElementById("myCanvas");
+      const ctx = canvas.getContext("2d");
+      ctx.moveTo(0, 0);
+      ctx.lineTo(200, 100);
+      ctx.stroke();
+
+      // Drawing a circle
+      ctx.beginPath();
+      ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+      ctx.stroke();
+
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+          document.getElementById("location").innerText =
+            "Geolocation is not supported by this browser.";
+        }
+      }
+
+      function showPosition(position) {
+        document.getElementById(
+          "location"
+        ).innerText = `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`;
+      }
+
+      function showError(error) {
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            document.getElementById("location").innerText =
+              "User denied the request for Geolocation.";
+            break;
+          case error.POSITION_UNAVAILABLE:
+            document.getElementById("location").innerText =
+              "Location information is unavailable.";
+            break;
+          case error.TIMEOUT:
+            document.getElementById("location").innerText =
+              "The request to get user location timed out.";
+            break;
+          case error.UNKNOWN_ERROR:
+            document.getElementById("location").innerText =
+              "An unknown error occurred.";
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>

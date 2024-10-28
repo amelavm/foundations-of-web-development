@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Save User Input</title>
+  </head>
+  <body>
+    <h1>Enter Your Details</h1>
+    <form id="userForm">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" required /><br /><br />
+
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" required /><br /><br />
+
+      <label for="jobTitle">Job Title:</label>
+      <input type="text" id="jobTitle" required /><br /><br />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+      document
+        .getElementById("userForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const firstName = document.getElementById("firstName").value;
+          const lastName = document.getElementById("lastName").value;
+          const jobTitle = document.getElementById("jobTitle").value;
+
+          localStorage.setItem("firstName", firstName);
+          localStorage.setItem("lastName", lastName);
+          localStorage.setItem("jobTitle", jobTitle);
+
+          document.getElementById(
+            "result"
+          ).innerText = `Hello, ${firstName} ${lastName}, ${jobTitle}!`;
+          this.reset();
+        });
+    </script>
+  </body>
+</html>

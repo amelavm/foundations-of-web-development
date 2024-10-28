@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Data Entry Form</title>
+    <script>
+        function saveToLocalStorage() {
+            const firstName = document.getElementById('first_name').value;
+            const lastName = document.getElementById('last_name').value;
+            const jobTitle = document.getElementById('job_title').value;
+
+            localStorage.setItem('firstName', firstName);
+            localStorage.setItem('lastName', lastName);
+            localStorage.setItem('jobTitle', jobTitle);
+
+            // Display message
+            document.getElementById('output').textContent = `Hello, ${firstName} ${lastName}, ${jobTitle}!`;
+
+            // Clear fields after submission
+            document.getElementById('first_name').value = '';
+            document.getElementById('last_name').value = '';
+            document.getElementById('job_title').value = '';
+        }
+    </script>
+</head>
+<body>
+    <h1>CV Data Entry Form</h1>
+    <form onsubmit="event.preventDefault(); saveToLocalStorage();">
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" required><br><br>
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" required><br><br>
+
+        <label for="job_title">Job Title:</label>
+        <input type="text" id="job_title" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Display the output after submission -->
+    <p id="output"></p>
+</body>
+</html>

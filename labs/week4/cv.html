@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adnan Hajro - Web Developer</title>
+    <script>
+        // Function to get the user's location
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                document.getElementById("location-info").textContent = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        // Display the user's latitude and longitude
+        function showPosition(position) {
+            document.getElementById("location-info").innerHTML = `Latitude: ${position.coords.latitude}<br>Longitude: ${position.coords.longitude}`;
+        }
+
+        // Handle possible errors
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    document.getElementById("location-info").textContent = "User denied the request for Geolocation.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    document.getElementById("location-info").textContent = "Location information is unavailable.";
+                    break;
+                case error.TIMEOUT:
+                    document.getElementById("location-info").textContent = "The request to get user location timed out.";
+                    break;
+                case error.UNKNOWN_ERROR:
+                    document.getElementById("location-info").textContent = "An unknown error occurred.";
+                    break;
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Adnan Hajro</h1>
+        <img src="../../lectures/assets/person.jpeg" alt="Profile Picture of Adnan Hajro" width="150" height="150" loading="lazy">
+    </header>
+
+    <!-- Navigation Section -->
+    <nav>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <hr>
+    <h2 id="about">Introduction</h2>
+    <p>Hello! My name is <strong>Adnan Hajro</strong>, and I am a <em>passionate</em> Web Developer with over <strong><u>5 years</u></strong> of experience...</p>
+
+    <hr>
+
+    <!-- Section: Geolocation -->
+    <h3>Your Location</h3>
+    <button onclick="getLocation()">Get My Location</button>
+    <p id="location-info">Click the button to get your location.</p>
+
+    <hr>
+    <article id="experience">
+        <h3>Professional Experience</h3>
+        <p>Over the past five years, I have worked on numerous web development projects, collaborating with clients to build responsive, accessible, and visually appealing websites. My expertise spans front-end development, back-end integration, and database management. I have successfully led projects in e-commerce, portfolio websites, and custom business solutions.</p>
+    </article>
+
+    <hr>
+
+
+    <!-- Footer Section -->
+    <footer>
+        <p>Contact: adnanhajro@example.com</p>
+        <p>© 2024 Adnan Hajro</p>
+    </footer>
+
+</body>
+</html>
