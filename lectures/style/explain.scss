@@ -1,0 +1,220 @@
+@import "reset";
+
+/* Defining variables */
+$myFont: Helvetica, sans-serif;
+$myColor: red;
+$myFontSize: 18px;
+$myWidth: 680px;
+
+body {
+  font-family: $myFont;
+  font-size: $myFontSize;
+  color: $myColor;
+}
+
+#container {
+  width: $myWidth;
+}
+
+/*
+The code above will look like this in CSS:
+
+body {
+  font-family: Helvetica, sans-serif;
+  font-size: 18px;
+  color: red;
+}
+
+#container {
+  width: 680px;
+}
+*/
+
+/* Variable scope */
+$myColor: red;
+
+h1 {
+  $myColor: green; /* Local scope */
+  color: $myColor;
+}
+
+p {
+  color: $myColor; /* Will use the global $myColor */
+}
+
+/*
+The code above will look like this in CSS:
+
+h1 {
+  color: green;
+}
+
+p {
+  color: red;
+}
+*/
+
+/* Global variable with !global keyword */
+$myColor: red;
+
+h1 {
+  $myColor: green !global; /* Modify global variable */
+  color: $myColor;
+}
+
+p {
+  color: $myColor;
+}
+
+/*
+The code above will look like this in CSS:
+
+h1 {
+  color: green;
+}
+
+p {
+  color: green;
+}
+*/
+
+/* Nesting example */
+nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    display: inline-block;
+  }
+  a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+  }
+}
+
+/*
+The code above will look like this in CSS:
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+}
+
+nav a {
+  display: block;
+  padding: 6px 12px;
+  text-decoration: none;
+}
+*/
+
+
+
+/*
+The code above will look like this in CSS:
+
+font-family: Helvetica, sans-serif;
+font-size: 18px;
+font-weight: bold;
+
+text-align: center;
+text-transform: lowercase;
+text-overflow: hidden;
+*/
+
+
+/*mixin*/
+@mixin important-text {
+  color: red;
+  font-size: 25px;
+  font-weight: bold;
+  border: 1px solid blue;
+}
+
+/*include*/
+.danger {
+  @include important-text;
+  background-color: green;
+}
+
+/*The CSS of code above:
+.danger {
+  color: red;
+  font-size: 25px;
+  font-weight: bold;
+  border: 1px solid blue;
+  background-color: green;
+}
+*/
+
+
+/* Define mixin with two arguments */
+@mixin bordered($color, $width) {
+  border: $width solid $color;
+}
+
+.myArticle {
+  @include bordered(blue, 1px);  // Call mixin with two values
+}
+
+.myNotes {
+  @include bordered(red, 2px); // Call mixin with two values
+}
+
+/*CSS for code above:
+.myArticle {
+  border: 1px solid blue;
+}
+
+.myNotes {
+  border: 2px solid red;
+}
+*/
+
+/*extend*/
+
+.button-basic  {
+  border: none;
+  padding: 15px 30px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button-report  {
+  @extend .button-basic;
+  background-color: red;
+}
+
+.button-submit  {
+  @extend .button-basic;
+  background-color: green;
+  color: white;
+}
+
+/*CSS for code above:
+.button-basic, .button-report, .button-submit {
+  border: none;
+  padding: 15px 30px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button-report  {
+  background-color: red;
+}
+
+.button-submit  {
+  background-color: green;
+  color: white;
+}
+
+*/

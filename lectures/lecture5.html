@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>CSS</title>
+   <meta name="keywords" content="CSS" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+   <!--External CSS-->
+   <link rel="stylesheet" href="style/lecture5.css" type="text/css">
+
+   <!--Adding stylesheets based on  media-->
+   <link rel="stylesheet" media="print" href="print.css">
+    <link rel="stylesheet" media="screen" href="screen.css">
+    <link rel="stylesheet" media="screen and (min-width: 480px)" href="example1.css">
+    <link rel="stylesheet" media="screen and (min-width: 701px) and (max-width: 900px)" href="example2.css">
+</head>
+<body>
+    <!--Element selector-->
+    <style>
+        p {
+          text-align: center;
+          color: red;
+        }
+    </style>
+    <p>This is red paragraph.</p>
+
+    <!--Id selector-->
+    <style>
+        #para1 {
+          text-align: center;
+          color: blue;
+        }
+    </style>
+    <p id="para1">This is blue paragraph.</p>
+
+    <!--Class selector-->
+    <style>
+    .paraclass {
+        text-align: center;
+        color: green;
+    }
+    </style>
+    <p class="paraclass">This is green paragraph.</p>
+       
+    <!--Combining class and element selectorors-->
+    <style>
+        p.center {
+            text-align: center;
+            color: red;
+        }
+    </style>
+    <p class="center">This is centered paragraph.</p>
+    
+    <!--Universal selector-->
+    <style>
+        * {
+        text-align: center;
+        color: blue;
+        }
+    </style>
+    <p class="center">This is centered paragraph.</p>
+
+    <!--Internal CSS-->
+    <style>
+        body {
+          background-color: linen;
+        }
+        
+        h1 {
+          color: maroon;
+          margin-left: 40px;
+        }
+    </style>
+
+    <!--Inline CSS-->
+    <h1 style="color:blue;text-align:center;">This is a heading</h1>
+    <p style="color:red;">This is a paragraph.</p>
+  
+    
+    
+
+
+</body>
+</html>
+
+

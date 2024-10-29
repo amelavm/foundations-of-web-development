@@ -1,0 +1,308 @@
+/* Background color for body */
+body {
+  background-color: lightblue;
+}
+
+/* H1 styling */
+h1 {
+  color: navy;
+  margin-left: 20px;
+}
+
+/* Color for paragraphs */
+p {
+  color: DarkCyan;
+}
+
+/* Background color for paragraphs */
+p {
+  background-color: rgb(200, 200, 200);
+}
+
+/* Opacity for paragraphs */
+p {
+  opacity: 0.5;
+}
+
+/* Font family for paragraphs */
+p {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Font size for paragraphs */
+p {
+  font-size: 12px;
+}
+
+/* Font face */
+@font-face {
+  font-family: 'ChunkFiveRegular';
+  src: url('fonts/chunkfive.eot');
+  src: url('fonts/chunkfive.eot?#iefix') format('embedded-opentype'),
+       url('fonts/chunkfive.woff') format('woff'),
+       url('fonts/chunkfive.ttf') format('truetype'),
+       url('fonts/chunkfive.svg#ChunkFiveRegular') format('svg');
+}
+
+/* Font weight for paragraphs */
+p {
+  font-weight: bold;
+}
+
+/* Font style for paragraphs */
+p {
+  font-style: italic;
+}
+
+/* Text transform for paragraphs */
+p {
+  text-transform: uppercase;
+}
+
+/* Text decoration for paragraphs */
+p {
+  text-decoration: underline;
+}
+
+/* Line height for paragraphs */
+p {
+  line-height: 1.4em;
+}
+
+/* Letter and word spacing for paragraphs */
+p {
+  letter-spacing: 0.2em;
+  word-spacing: 1em;
+}
+
+/* Text alignment for paragraphs */
+p {
+  text-align: right;
+}
+
+/* Vertical alignment for paragraphs */
+p {
+  vertical-align: text-top;
+}
+p {
+  vertical-align: baseline;
+}
+p {
+  vertical-align: text-bottom;
+}
+
+/* Text indent for paragraphs */
+p {
+  text-indent: 20px;
+}
+
+/* Text shadow for paragraphs */
+p {
+  text-shadow: 1px 1px 1px black;
+}
+
+/* Link and visited state colors */
+a:link {
+  color: deeppink;
+}
+a:visited {
+  color: purple;
+}
+
+/* Hover, active, and focus states for input */
+input:hover {
+  background-color: green;
+}
+input:active {
+  background-color: red;
+}
+input:focus {
+  background-color: blue;
+}
+
+/* Height and width for div */
+div {
+  height: 50px;
+  width: 300px;
+  background-color: #bbbbaa;
+}
+
+/* Overflow for div */
+div {
+  max-height: 200px;
+  max-width: 300px;
+  background-color: #bbbbaa;
+  overflow: scroll;
+}
+
+/* Border width and style for div */
+div {
+  border-width: 2px;
+  border-style: solid;
+  max-width: 300px;
+}
+
+/* Border styles */
+div {
+  max-width: 500px;
+}
+.one {
+  border-style: solid;
+}
+.second {
+  border-style: dotted;
+}
+.third {
+  border-style: dashed;
+}
+.fourth {
+  border-style: double;
+}
+.fifth {
+  border-style: groove;
+}
+.sixth {
+  border-style: ridge;
+}
+.seventh {
+  border-style: inset;
+}
+.eight {
+  border-style: outset;
+}
+
+/* Border color */
+.one {
+  border-style: solid;
+  border-color: red;
+}
+
+/* Border with custom style */
+.one {
+  border: 3px dotted rebeccapurple;
+}
+
+/* Padding for .one-div */
+.one-div {
+  padding: 40px;
+  border: 2px solid green;
+  max-width: 300px;
+}
+
+/* Margin for .one-div */
+.one-div {
+  margin: 40px;
+  border: 2px solid green;
+  max-width: 300px;
+}
+
+/* Display block */
+.block-example {
+  display: block;
+  background-color: lightblue;
+  padding: 10px;
+}
+
+/* Display inline */
+.inline-example {
+  display: inline;
+  background-color: lightgreen;
+  padding: 5px;
+}
+
+/* Display inline-block */
+.inline-block-example {
+  display: inline-block;
+  background-color: lightcoral;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+}
+
+/* Visibility for list item */
+li.coming-soon {
+  visibility: hidden;
+}
+
+/* Box shadow for .big-box */
+.big-box {
+  box-shadow: 5px 5px 5px 5px grey;
+}
+
+/* Border radius for .big-box */
+.big-box {
+  box-shadow: 5px 5px 5px 5px grey;
+  border-radius: 5px;
+}
+
+/* List style type for unordered list */
+ul {
+  list-style-type: square;
+}
+
+/* Cursor style for list item */
+li {
+  cursor: move;
+}
+
+/* Background image for div */
+div {
+  background-image: url(../assets/ibu-logo.png);
+}
+
+/* Background color for body */
+body {
+  background-color: grey;
+}
+
+/* Background repeat for body */
+body {
+  background-repeat: no-repeat;
+}
+
+/* Background attachment for body */
+body {
+  background-attachment: fixed;
+}
+
+/* Background position for body */
+body {
+  background-position: center;
+}
+
+/* Vertical align for table cells */
+td {
+  vertical-align: bottom;
+}
+
+/* Z-index for images */
+img {
+  z-index: -1;
+}
+
+/* Float property for div */
+div {
+  float: left;
+}
+
+/* position */
+body {
+  position: static;
+}
+
+/* Media queries */
+@media screen and (min-width: 480px) {
+  body {
+    background-color: lightgreen;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  #leftsidebar {
+    width: 200px;
+    float: left;
+  }
+  #main {
+    margin-left: 216px;
+  }
+}
