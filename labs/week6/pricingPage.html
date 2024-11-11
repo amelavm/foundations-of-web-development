@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing Page</title>
+  
+  <link href="assets/css/mystyles.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+</head>
+<body>
+  <style>
+  .bg {
+    padding: 20px;
+    border-radius: 7px;
+    color: white;
+  }
+  .form-check.form-switch {
+    padding: 5px;
+    padding-left: 10px;
+  }
+  .form-check.form-switch .form-check-input{
+    padding-top: 23px;
+  }
+
+  .form-check.form-switch .form-check-label{
+    color: white;
+    font-size:20px;
+    font-weight:400;
+  }
+
+  </style>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-custom">
+  <a class="navbar-brand" href="#">Pricing Page</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item"><a class="nav-link" href="landingPage.html">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="landingPage.html">Features</a></li>
+      <li class="nav-item"><a class="nav-link" href="landingPage.html">Pricing</a></li>
+      <li class="nav-item"><a class="nav-link" href="#footer">Contact Us</a></li>
+    </ul>
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+      <label class="form-check-label" for="flexSwitchCheckDefault">Notifications</label>
+    </div>
+    <button class="btn btn-outline-light me-2">My Profile</button>
+  </div>
+</nav>
+
+<!-- Statistics Section -->
+<div class="container my-5">
+  <div class="row text-center">
+    <div class="col-md-4">
+      <h1><span class="bg bg-secondary">Sales: <b>120</b></span></h1>
+    </div>
+    <div class="col-md-4">
+      <h1><span class="bg bg-warning">Revenue: <b>$5,000</b></span></h1>
+    </div>
+    <div class="col-md-4">
+      <h1><span class="bg bg-success">Users: <b>1,200</b></span></h1>
+    </div>
+  </div>
+</div>
+
+<!-- User Purchases Table -->
+<div class="container my-5">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Service Name</th>
+        <th>Service Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>John Doe</td>
+        <td>john@example.com</td>
+        <td>Basic Subscription</td>
+        <td>Received</td>
+        <td><button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#cancelModal">Cancel</button></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Smith</td>
+        <td>jane@example.com</td>
+        <td>Premium Subscription</td>
+        <td>Pending</td>
+        <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Cancel Subscription Modal -->
+<div class="modal fade" id="cancelModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cancel Subscription</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="spinner-border text-primary" role="status" id="spinnerCancel" style="display:none;"></div>
+        <p>Are you sure you want to cancel this subscription?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-warning" onclick="showSpinner('spinnerCancel')">Yes, Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Purchase Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Purchase</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="spinner-border text-danger" role="status" id="spinnerDelete" style="display:none;"></div>
+        <p>Are you sure you want to delete this purchase?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-danger" onclick="showSpinner('spinnerDelete')">Yes, Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer id="footer" class="footer text-center">
+    <div class="container">
+        <p>&copy; 2024 CV Creator Tool. All rights reserved.</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            <li class="list-inline-item"><a href="#">Terms of Service</a></li>
+            <li class="list-inline-item"><a href="#">Contact Us</a></li>
+        </ul>
+        <ul id="footerID" class="list-inline">
+            <li><b>Contact:</b> +38761234567</li>
+            <li><b>Email:</b> something@gmail.com</li>
+            <li><b>Work Hours:</b> 8:00 - 16:00 (Workdays only!)</li>
+        </ul>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>

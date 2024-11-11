@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link href="assets/css/mystyles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-custom">
+  <a class="navbar-brand" href="#">CV Creator Tool</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item"><a class="nav-link" href="landingPage.html">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="landingPage.html">Features</a></li>
+      <li class="nav-item"><a class="nav-link" href="landingPage.html">Pricing</a></li>
+      <li class="nav-item"><a class="nav-link" href="#footer">Contact Us</a></li>
+    </ul>
+    <button class="btn btn-outline-light me-2">Sign In</button>
+  </div>
+</nav>
+
+<div class="bg-light">
+<!-- Registration Form -->
+<div class="container my-5">
+    <div class="card mx-auto" style="max-width: 600px;">
+        <div class="card-header text-center bg-primary text-white">
+            <h3>User Registration</h3>
+        </div>
+        <div class="card-body">
+            <form action="/submit.php" method="POST" class="was-validated" novalidate id="registrationForm">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please enter your name.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username:</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please enter a username.</div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please enter a password.</div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="age" class="form-label">Age:</label>
+                    <input type="number" class="form-control" id="age" name="age" required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please provide your age.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number:</label>
+                    <input type="number" class="form-control" id="phone" name="phone" required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please enter your phone number.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="gender" class="form-label">Gender:</label>
+                    <select class="form-select" id="gender" name="gender" required>
+                        <option value="Female" selected>Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please select your gender.</div>
+                </div>
+                
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary w-100 d-flex justify-content-center align-items-center" id="submitBtn">
+                    Submit
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="progress m-5">
+    <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+
+</div>
+</div>
+<!-- Footer -->
+<footer id="footer" class="footer text-center">
+    <div class="container">
+        <p>&copy; 2024 CV Creator Tool. All rights reserved.</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            <li class="list-inline-item"><a href="#">Terms of Service</a></li>
+            <li class="list-inline-item"><a href="#">Contact Us</a></li>
+        </ul>
+        <ul id="footerID" class="list-inline">
+            <li><b>Contact:</b> +38761234567</li>
+            <li><b>Email:</b> something@gmail.com</li>
+            <li><b>Work Hours:</b> 8:00 - 16:00 (Workdays only!)</li>
+        </ul>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

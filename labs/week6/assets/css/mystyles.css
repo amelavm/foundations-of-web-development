@@ -1,0 +1,64 @@
+.navbar-custom {
+    background-color: #007bff;
+    padding: 10px 20px;
+  }
+  .navbar-custom .nav-link, .navbar-custom .navbar-brand {
+    color: #fff !important;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+  }
+  .navbar-custom .btn-outline-light, .navbar-custom .btn-primary {
+    font-size: 1.1rem;
+  }
+  .section-heading {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  .footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    height: 100%;
+    margin-top:auto;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #footerID > li {
+    list-style-type: none;
+    text-align: center;
+    color: white;
+  }
+
+  .navbar-custom {
+    background-color: #007bff;
+    padding: 10px 20px;
+  }
+  .navbar-custom .nav-link, .navbar-custom .navbar-brand {
+    color: #fff !important;
+    letter-spacing: 1px;
+  }
+  .stat-card {
+    padding: 20px;
+    color: #fff;
+    font-size: 1.5rem;
+  }
+  .stat-sales { background-color: #17a2b8; }
+  .stat-revenue { background-color: #ffc107; }
+  .stat-users { background-color: #28a745; }
+  .table thead {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  .spinner-border {
+    width: 3rem;
+    height: 3rem;
+  }
