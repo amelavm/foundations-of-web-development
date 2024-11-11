@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Data Entry Form</title>
+    <link rel="stylesheet" href="../css/enterDataStyle.css">
+</head>
+<body>
+    <h1 style="text-align: center;color:green">CV Data Entry Form</h1>
+    <hr style="background-color: grey;">
+    <div style= "margin-left:20px; font-size: large;"> 
+    <form action="/submit-cv-data.php" method="POST">
+        
+
+        <fieldset>
+            <legend><strong>Personal Information</strong></legend>
+
+            <label for="full_name">Full Name:</label>
+            <input type="text" id="full_name" name="full_name" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required><br><br>
+            
+            <label for="profile_picture">Upload Profile Picture:</label>
+            <input type="file" id="profile_picture" name="profile_picture" accept=".jpg,.jpeg,.png" required><br><br>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend><strong>Introduction</strong></legend>
+            <label for="introduction">Write a short introduction about yourself:</label><br>
+            <textarea id="introduction" name="introduction" rows="4" cols="50" required></textarea><br><br>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend><strong>Skills</strong></legend>
+
+            <label for="skills">Select your skills:</label><br>
+            <input type="checkbox" id="html" name="skills" value="HTML">
+            <label for="html">HTML</label><br>
+
+            <input type="checkbox" id="css" name="skills" value="CSS">
+            <label for="css">CSS</label><br>
+
+            <input type="checkbox" id="javascript" name="skills" value="JavaScript">
+            <label for="javascript">JavaScript</label><br>
+
+            <input type="checkbox" id="react" name="skills" value="React">
+            <label for="react">React</label><br>
+
+            <input type="checkbox" id="node" name="skills" value="Node.js">
+            <label for="node">Node.js</label><br>
+
+            <input type="checkbox" id="express" name="skills" value="Express">
+            <label for="express">Express</label><br>
+
+            <input type="checkbox" id="git" name="skills" value="Git">
+            <label for="git">Git</label><br>
+            
+            <input type="checkbox" id="optimization" name="skills" value="Web Optimization">
+            <label for="optimization">Web Performance Optimization</label><br>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend><strong>Experience</strong></legend>
+
+            <label for="current_job">Current Position:</label>
+            <input type="text" id="current_job" name="current_job" required><br><br>
+
+            <label for="experience">Describe your experience:</label><br>
+            <textarea id="experience" name="experience" rows="4" cols="50" required></textarea><br><br>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend><strong>Education & Certifications</strong></legend>
+
+            <label for="degree">Degree:</label>
+            <select id="degree" name="degree" required>
+                <option value="high_school">High School</option>
+                <option value="bachelor">Bachelor</option>
+                <option value="master">Master</option>
+                <option value="mba">MBA</option>
+                <option value="phd">PhD</option>
+            </select><br><br>
+
+            <label for="certifications">Certifications:</label><br>
+            <textarea id="certifications" name="certifications" rows="4" cols="50" required></textarea><br><br>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend><strong>Personal Projects</strong></legend>
+
+            <label for="projects">Describe your personal projects:</label><br>
+            <textarea id="projects" name="projects" rows="4" cols="50" required></textarea><br><br>
+        </fieldset>
+
+        <br>
+
+        <button type="submit" style="margin-left:750px; padding: 10px 20px; background-color: green; color: white;">Submit CV</button>
+    </form>
+    </div>
+</body>
+</html>
+
+
