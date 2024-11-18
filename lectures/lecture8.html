@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Our First Page</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <!-- External script -->
+    <script src="scripts/script.js"></script>
+    <!-- Internal script -->
+    <script>
+        function sayHello() {
+            alert('Hello from Internal Script!');
+        }
+    </script>
+</head>
+<body>
+    <!-- Inline script -->
+    <button onclick="alert('Hello from Inline Script!')">Click Me</button>
+    <button onclick="sayHello()">Click Me</button>
+
+    <!-- InnerHTML and getElementById -->
+    <h1>My First Web Page</h1>
+    <p>My first paragraph</p>
+    <p id="demo"></p>
+    <script>
+        document.getElementById("demo").innerHTML = "This is usage of innerHTML";
+    </script>
+
+    <!-- Alert -->
+    <script>
+        window.alert(5 + 6);
+    </script>
+
+    <!-- Console -->
+    <script>
+        console.log(5 + 6);
+    </script>
+
+    <!-- Semicolons -->
+    <script>
+        let a, b, c;
+        a = 5;
+        b = 6;
+        c = a + b;
+    </script>
+
+    <!-- White space -->
+    <script>
+        let person1 = "Hege";
+        let person2 = "Hege";
+        let x = y + z;
+    </script>
+
+    <!-- Line breaks -->
+    <script>
+        document.getElementById("demo").innerHTML = "hello students!";
+    </script>
+
+    <!-- Output -->
+    <div id="output-area"></div>
+    <button onclick="displayOutputs()">Click to See Outputs</button>
+    <script>
+        function displayOutputs() {
+            document.getElementById("output-area").innerHTML = "Hello from innerHTML!";
+            document.write("This is written directly using document.write().<br>");
+            window.alert("Hello from window.alert!");
+            console.log("Hello from console.log!");
+        }
+    </script>
+
+    <!-- Constants, Variables, and Data Types -->
+    <script>
+        const pi = 3.14;
+        let x1 = "John Doe";
+        var x3 = "Amela";
+        let x5 = 5 + 5, y = "5" + 5, z = "Hello" + 5;
+        console.log(x5, y, z);
+
+        let length = 16, weight = 7.5;
+        let color = "Yellow", lastName = "Johnson";
+        let isTrue = true, isFalse = false;
+        const person = { firstName: "John", lastName: "Doe" };
+        const cars = ["Saab", "Volvo", "BMW"];
+        const date = new Date("2022-03-25");
+        let car, car2 = "";
+    </script>
+
+    <!-- Functions -->
+    <script>
+        function myFunction(a, b) {
+            return a * b;
+        }
+        console.log(myFunction(4, 3));
+
+        function toCelsius(fahrenheit) {
+            return (5 / 9) * (fahrenheit - 32);
+        }
+    </script>
+
+    <!-- Conditional Statements -->
+    <script>
+        let time = 15;
+        let greeting;
+        if (time < 10) {
+            greeting = "Good morning.";
+        } else if (time < 20) {
+            greeting = "Good day.";
+        } else {
+            greeting = "Good evening.";
+        }
+    </script>
+
+    <!-- Switch Case -->
+    <script>
+        let day;
+        switch (new Date().getDay()) {
+            case 0: day = "Sunday"; break;
+            case 1: day = "Monday"; break;
+            case 2: day = "Tuesday"; break;
+            case 3: day = "Wednesday"; break;
+            case 4: day = "Thursday"; break;
+            case 5: day = "Friday"; break;
+            case 6: day = "Saturday"; break;
+        }
+    </script>
+
+    <!-- Loops -->
+    <script>
+        for (let i = 0; i <= 15; i++) {
+            console.log(i);
+        }
+        let i = 0, text = "";
+        while (i < 10) {
+            text += "The number is " + i;
+            i++;
+        }
+        do {
+            text += "The number is " + i;
+            i++;
+        } while (i < 10);
+    </script>
+
+    <!-- Error Handling -->
+    <p id="error-demo"></p>
+    <script>
+        try {
+            adddlert("Welcome guest!");
+        } catch (err) {
+            document.getElementById("error-demo").innerHTML = err.message;
+        }
+    </script>
+
+    <button onclick="document.getElementById('demo').innerHTML = Date();">The time is?</button>
+
+    <!-- Input Validation -->
+    <input id="input-demo" type="text">
+    <button type="button" onclick="validateInput()">Test Input</button>
+    <p id="validation-msg"></p>
+    <script>
+        function validateInput() {
+            const message = document.getElementById("validation-msg");
+            message.innerHTML = "";
+            let x = document.getElementById("input-demo").value;
+            try {
+                if (x.trim() === "") throw "empty";
+                if (isNaN(x)) throw "not a number";
+                x = Number(x);
+                if (x < 5) throw "too low";
+                if (x > 10) throw "too high";
+            } catch (err) {
+                message.innerHTML = "Input is " + err;
+            }
+        }
+    </script>
+
+    <!-- Arrow Functions -->
+    <script>
+        const hello = () => {
+            document.getElementById("demo").innerHTML += this;
+        };
+        window.addEventListener("load", hello);
+    </script>
+</body>
+</html>
