@@ -1,30 +1,46 @@
 <!DOCTYPE html>
 <html>
 <body>
-
-<h1>JavaScript "this"</h1>
-
-<p>This example demonstrate that in Arrow Functions, the "this" keyword represents the object that owns the function, no matter who calls the function.</p>
-
-<p>Click the button to execute the "hello" function again, and you will see that "this" still  represents the window object.</p>
-
-<button id="btn">Click Me!</button>
+<h1>JavaScript Arrays</h1>
+<h2>Looping an Array</h2>
 
 <p id="demo"></p>
 
 <script>
-let hello = "";
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+let fLen = fruits.length;
 
-hello = () => {
-  document.getElementById("demo").innerHTML += this;
+let text = "<ul>";
+for (let i = 0; i < fLen; i++) {
+  text += "<li>" + fruits[i] + "</li>";
 }
+text += "</ul>";
 
-//The window object calls the function:
-window.addEventListener("load", hello);
+document.getElementById("demo").innerHTML = text;
 
-//A button object calls the function:
-document.getElementById("btn").addEventListener("click", hello);
+const fruits3 = ["Banana", "Orange", "Apple", "Mango"];
+
+        let text3 = "<ul>";
+          fruits3.forEach(myFunction);
+        text3 += "</ul>";
+
+        function myFunction(value) {
+          text3 += "<li>" + value + "</li>";
+        }
+
+
+        //map
+        const numbers1 = [45, 4, 9, 16, 25];
+        const numbers2 = numbers1.map(myFunction);
+
+        function myFunction(value, index, array) {
+            return value * 2;
+        }
+
+        console.log(numbers2);
 </script>
 
 </body>
 </html>
+
+

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS Data Types</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+</head>
+<body>
+    <script>
+        //Differences between primitive and non-primitive dt
+        // Primitive
+        let x = 10;
+        let y = x; // y gets a copy of x
+        y = 20;
+        console.log(x); // Output: 10 (x remains unchanged)
+
+        // Non-Primitive
+        let obj1 = { value: 10 };
+        let obj2 = obj1; // obj2 gets a reference to obj1
+        obj2.value = 20;
+        console.log(obj1.value); // Output: 20 (obj1 is affected)
+
+        //Objects using object literals
+        const person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+
+        const person2 = {};
+        person2.firstName = "John";
+        person2.lastName = "Doe";
+        person2.age = 50;
+        person2.eyeColor = "blue";
+
+        //Objects using new
+
+        const person3 = new Object();
+
+        person3.firstName = "John";
+        person3.lastName = "Doe";
+        person3.age = 50;
+        person3.eyeColor = "blue";
+
+        //Methods 
+        const person4 = {
+            firstName: "John",
+            lastName : "Doe",
+            id       : 5566,
+            fullName : function() {
+                return this.firstName + " " + this.lastName;
+            }
+        };
+        console.log(person4.fullName())
+
+        // Objects are mutable
+        //Create an Object
+        const person5 = {
+            firstName:"John",
+            lastName:"Doe",
+            age:50, eyeColor:"blue"
+        }
+
+        // Create a copy
+        const personcopy = person;
+
+        // Change Age in both
+        personcopy.age = 10;
+
+        //Deleting object property
+        delete personcopy.age;
+
+
+        //Displaying the object
+        const personx = {
+        name: "John",
+        age: 30,
+        city: "New York"
+        };
+
+        let text = "";
+        for (let x in personx) {
+        text += personx[x] + " ";
+        };
+
+        document.getElementById("demo").innerHTML = text;
+
+        //Stringify
+        const person7 = {
+        name: "John",
+        age: 30,
+        city: "New York"
+        };
+
+
+        let myString = JSON.stringify(person7);
+
+
+        //Creating arrays
+        const cars = [
+            "Saab",
+            "Volvo",
+            "BMW"
+        ];
+
+        const cars2 = new Array("Saab", "Volvo", "BMW");
+
+
+        //Accessing and changing
+        const cars3 = ["Saab", "Volvo", "BMW"];
+        console.log(cars3[0]);
+        cars[0] = "Opel";
+
+        //Access full array
+        console.log(cars3);
+
+        //Arrays are objects
+        console.log(typeof(cars3))
+
+
+        //length
+        const fruits = ["Banana", "Orange", "Apple", "Mango"];
+        let length = fruits.length;
+        console.log(length);
+
+        //sort
+        console.log(fruits.sort())
+
+        //push 
+        fruits.push("Lemon");
+        console.log(fruits);
+
+        //typeof
+        console.log(typeof(fruits))
+
+        //Loop
+        const fruits2 = ["Banana", "Orange", "Apple", "Mango"];
+        let fLen = fruits2.length;
+
+        let text2 = "<ul>";
+        for (let i = 0; i < fLen; i++) {
+            text2 += "<li>" + fruits2[i] + "</li>";
+        }
+        text2 += "</ul>";
+
+        //forEach
+        let text3 = "<ul>";
+        fruits.forEach(myFunction);
+        text += "</ul>";
+
+        function myFunction(value) {
+            text3 += "<li>" + value + "</li>";
+        }
+
+        //map
+        const numbers1 = [45, 4, 9, 16, 25];
+        const numbers2 = numbers1.map(myFunction);
+
+        function myFunction(value, index, array) {
+            return value * 2;
+        }
+
+        console.log(numbers2);
+
+        //array methods
+        let fruitss = ["apple", "banana", "cherry", "date"];
+
+        console.log(fruitss.at(1)); // "banana"
+        console.log(fruitss.at(-1)); // "date"
+
+        console.log(fruitss.join(", ")); // "apple, banana, cherry, date"
+
+        let lastFruit = fruitss.pop();
+        console.log(lastFruit); // "date"
+        console.log(fruitss); // ["apple", "banana", "cherry"]
+
+        let firstFruit = fruitss.shift();
+        console.log(firstFruit); // "apple"
+        console.log(fruitss); // ["banana", "cherry"]
+
+        fruitss.unshift("grape");
+        console.log(fruitss); // ["grape", "banana", "cherry"]
+
+        let moreFruits = ["kiwi", "mango"];
+        let allFruits = fruitss.concat(moreFruits);
+        console.log(allFruits); // ["grape", "banana", "cherry", "kiwi", "mango"]
+
+        let slicedFruits = allFruits.slice(1, 4);
+        console.log(slicedFruits); // ["banana", "cherry", "kiwi"]
+
+        console.log(allFruits.toString()); // "grape,banana,cherry,kiwi,mango"
+
+        //Creating date objects
+        let now = new Date();
+        console.log(now); // Current date and time
+
+        let dateString = new Date("2024-11-25T10:30:00");
+        console.log(dateString); // Mon Nov 25 2024 10:30:00
+
+        let yearMonth = new Date(2024, 10); // Month is zero-indexed (10 = November)
+        console.log(yearMonth); // Fri Nov 01 2024 00:00:00
+
+        let yearMonthDay = new Date(2024, 10, 25);
+        console.log(yearMonthDay); // Mon Nov 25 2024 00:00:00
+
+        let yearMonthDayHour = new Date(2024, 10, 25, 10);
+        console.log(yearMonthDayHour); // Mon Nov 25 2024 10:00:00
+
+        let yearMonthDayHourMinute = new Date(2024, 10, 25, 10, 30);
+        console.log(yearMonthDayHourMinute); // Mon Nov 25 2024 10:30:00
+
+        let yearMonthDayHourMinuteSecond = new Date(2024, 10, 25, 10, 30, 15);
+        console.log(yearMonthDayHourMinuteSecond); // Mon Nov 25 2024 10:30:15
+
+        let fullDate = new Date(2024, 10, 25, 10, 30, 15, 500);
+        console.log(fullDate); // Mon Nov 25 2024 10:30:15.500
+
+        let fromMilliseconds = new Date(172800000); // 2 days in milliseconds
+        console.log(fromMilliseconds); // Thu Jan 03 1970 00:00:00
+
+
+        //date methods
+        let date = new Date("2024-11-25T10:30:00");
+
+        console.log(date.toString()); // "Mon Nov 25 2024 10:30:00 GMT+0000 (UTC)"
+        console.log(date.toDateString()); // "Mon Nov 25 2024"
+        console.log(date.toUTCString()); // "Mon, 25 Nov 2024 10:30:00 GMT"
+        console.log(date.toISOString()); // "2024-11-25T10:30:00.000Z"
+
+        console.log(date.getFullYear()); // 2024
+        console.log(date.getMonth()); // 10 (November, zero-indexed)
+        console.log(date.getDate()); // 25
+        console.log(date.getHours()); // 10
+        console.log(date.getMinutes()); // 30
+
+        console.log(date.getSeconds()); // 15
+        console.log(date.getMilliseconds()); // 250
+        console.log(date.getDay()); // 1 (Monday, 0 = Sunday)
+        console.log(date.getTime()); // 1732525815250
+
+        console.log(Date.now()); // Current timestamp in milliseconds
+        console.log(date.getSeconds()); // 15
+        console.log(date.getMilliseconds()); // 250
+        console.log(date.getDay()); // 1 (Monday, 0 = Sunday)
+        console.log(date.getTime()); // 1732525815250
+
+        console.log(Date.now()); // Current timestamp in milliseconds
+
+
+        //Math object
+        console.log(Math.round(4.5)); // 5
+        console.log(Math.ceil(4.2)); // 5
+        console.log(Math.floor(4.8)); // 4
+        console.log(Math.trunc(4.9)); // 4
+
+        console.log(Math.sign(-5)); // -1
+        console.log(Math.sign(0)); // 0
+        console.log(Math.sign(5)); // 1
+
+        console.log(Math.pow(2, 3)); // 8
+        console.log(Math.sqrt(16)); // 4
+        console.log(Math.abs(-7)); // 7
+
+        console.log(Math.sin(Math.PI / 2)); // 1
+        console.log(Math.cos(0)); // 1
+
+        console.log(Math.min(3, 1, 4, 2)); // 1
+        console.log(Math.max(3, 1, 4, 2)); // 4
+
+        //Maps
+        const fruitsmap = new Map([
+        ["apples", 500],
+        ["bananas", 300],
+        ["oranges", 200]
+        ]);
+
+        const fruitsmap2 = new Map();
+
+        fruitsmap2.set("apples", 500);
+        fruitsmap2.set("bananas", 300);
+        fruitsmap2.set("oranges", 200);
+
+        //map methods
+        let fruits10 = new Map([
+            ["apples", 10],
+            ["bananas", 20],
+            ["cherries", 30]
+        ]);
+
+        console.log(fruits.get("apples")); // 10
+        console.log(fruits.size); // 3
+
+        fruits.delete("bananas");
+        console.log(fruits); // Map { "apples" => 10, "cherries" => 30 }
+
+        console.log(fruits.has("cherries")); // true
+        console.log(fruits.has("bananas")); // false
+
+        fruits.clear();
+        console.log(fruits); // Map {}
+
+        fruits.set("oranges", 15).set("grapes", 25);
+        console.log([...fruits.entries()]); // [ [ 'oranges', 15 ], [ 'grapes', 25 ] ]
+        console.log([...fruits.keys()]); // [ 'oranges', 'grapes' ]
+        console.log([...fruits.values()]); // [ 15, 25 ]
+
+        //looping through maps
+        let fruits11 = new Map([
+            ["apples", 10],
+            ["bananas", 20],
+            ["cherries", 30]
+        ]);
+
+        // List all entries
+        let text11 = "";
+        fruits11.forEach (function(value, key) {
+            text11 += key + ' = ' + value;
+        })
+
+        // sets
+        let fruits12 = new Set();
+
+        fruits.add("apple");
+        fruits.add("banana");
+        fruits.add("cherry");
+        console.log(fruits); // Set { 'apple', 'banana', 'cherry' }
+
+        console.log(fruits.has("apple")); // true
+        console.log(fruits.has("mango")); // false
+
+        console.log([...fruits.values()]); // [ 'apple', 'banana', 'cherry' ]
+
+        console.log([...fruits.keys()]); // [ 'apple', 'banana', 'cherry' ]
+
+        console.log([...fruits.entries()]); // [ ['apple', 'apple'], ['banana', 'banana'], ['cherry', 'cherry'] ]
+
+
+        // looping
+        const letters = new Set(["a","b","c"]);
+
+        let text12 = "";
+        for (const x of letters) {
+            text12 += x;
+        }
+    </script>
+</body>
+</html>
