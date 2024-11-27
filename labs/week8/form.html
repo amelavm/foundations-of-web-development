@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-10">
+    <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold mb-6">CV Information Form</h1>
+        <form id="cvForm" class="space-y-4">
+            <!-- Contact Information -->
+            <div>
+                <label class="block text-sm font-medium">Name</label>
+                <input type="text" id="name" class="w-full px-3 py-2 border rounded-md" placeholder="Your Name">
+            </div>
+            <div>
+                <label class="block text-sm font-medium">Job Title</label>
+                <input type="text" id="jobTitle" class="w-full px-3 py-2 border rounded-md" placeholder="Web Developer">
+            </div>
+            <div>
+                <label class="block text-sm font-medium">Phone</label>
+                <input type="text" id="phone" class="w-full px-3 py-2 border rounded-md" placeholder="123-456-7890">
+            </div>
+            <div>
+                <label class="block text-sm font-medium">Email</label>
+                <input type="email" id="email" class="w-full px-3 py-2 border rounded-md" placeholder="your.email@example.com">
+            </div>
+            <div>
+                <label class="block text-sm font-medium">Location</label>
+                <input type="text" id="location" class="w-full px-3 py-2 border rounded-md" placeholder="City, Country">
+            </div>
+
+            <!-- Education -->
+            <div>
+                <label class="block text-sm font-medium">Education</label>
+                <textarea id="education" class="w-full px-3 py-2 border rounded-md" placeholder="List your educational background, separate each entry with a comma"></textarea>
+            </div>
+
+            <!-- Skills -->
+            <div>
+                <label class="block text-sm font-medium">Skills</label>
+                <textarea id="skills" class="w-full px-3 py-2 border rounded-md" placeholder="List your skills, separate each skill with a comma"></textarea>
+            </div>
+
+            <!-- Introduction -->
+            <div>
+                <label class="block text-sm font-medium">Introduction</label>
+                <textarea id="introduction" class="w-full px-3 py-2 border rounded-md" placeholder="Brief introduction about yourself"></textarea>
+            </div>
+
+            <!-- Experience -->
+            <div>
+                <label class="block text-sm font-medium">Experience</label>
+                <textarea id="experience" class="w-full px-3 py-2 border rounded-md" placeholder="List your work experience, separate each entry with a comma"></textarea>
+            </div>
+
+            <!-- Dynamic Projects -->
+            <div>
+                <label class="block text-sm font-medium">Projects</label>
+                <div id="projects-container" class="space-y-4"></div>
+                <button type="button" id="addProjectBtn" class="bg-green-500 text-white px-3 py-1 rounded-md mt-4">Add Project</button>
+            </div>
+
+            <!-- Hobbies -->
+            <div>
+                <label class="block text-sm font-medium">Hobbies</label>
+                <textarea id="hobbies" class="w-full px-3 py-2 border rounded-md" placeholder="List your hobbies, separate each hobby with a comma"></textarea>
+            </div>
+
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">Generate CV</button>
+        </form>
+    </div>
+    <script src="submitHandling.js"></script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Table with Sorting and Hover</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <style>
+    /* Hover effect for table rows */
+    tr:hover {
+      background-color: #f1f5f9; /* Light gray background on hover */
+    }
+    /* Styles for sorting icons */
+    .sort-icon {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+    .sort-icon.up::before {
+      content: '▲';
+    }
+    .sort-icon.down::before {
+      content: '▼';
+    }
+    /* Modal styling */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 p-10">
+  <div class="container mx-auto">
+    <table id="dynamic-table" class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+      <thead>
+        <tr class="bg-gray-200 text-gray-700">
+          <th class="py-3 px-4 text-left cursor-pointer" onclick="sortTable('id')">ID <span class="sort-icon" id="sort-icon-id"></span></th>
+          <th class="py-3 px-4 text-left cursor-pointer" onclick="sortTable('name')">Name <span class="sort-icon" id="sort-icon-name"></span></th>
+          <th class="py-3 px-4 text-left cursor-pointer" onclick="sortTable('country')">Country <span class="sort-icon" id="sort-icon-country"></span></th>
+          <th class="py-3 px-4 text-left cursor-pointer" onclick="sortTable('email')">Email <span class="sort-icon" id="sort-icon-email"></span></th>
+          <th class="py-3 px-4 text-left">Action</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <!-- Rows will be dynamically generated here -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal for displaying clicked user -->
+  <div id="modal" class="modal flex">
+    <div class="modal-content">
+      <p id="modal-text"></p>
+      <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // Sample data
+    const data = [
+      { id: 1, name: "John Doe", country: "USA", email: "john@example.com" },
+      { id: 2, name: "Jane Smith", country: "UK", email: "jane@example.com" },
+      { id: 3, name: "Carlos Mendez", country: "Spain", email: "carlos@example.com" },
+      { id: 4, name: "Akira Tanaka", country: "Japan", email: "akira@example.com" },
+      { id: 5, name: "Maria Rossi", country: "Italy", email: "maria@example.com" }
+    ];
+
+    // State to keep track of sorting order
+    let sortOrder = {
+      id: 'asc',
+      name: 'asc',
+      country: 'asc',
+      email: 'asc'
+    };
+
+    // Function to render the table
+    function renderTable(data) {
+      const tableBody = document.getElementById('table-body');
+      tableBody.innerHTML = '';
+      data.forEach(item => {
+        const row = `
+          <tr class="border-b">
+            <td class="py-3 px-4 left-center">${item.id}</td>
+            <td class="py-3 px-4 text-left">${item.name}</td>
+            <td class="py-3 px-4">${item.country}</td>
+            <td class="py-3 px-4">${item.email}</td>
+            <td class="py-3 px-4"><button class="bg-blue-500 text-white px-4 py-1 rounded" onclick="showModal('${item.name}')">Click</button></td>
+          </tr>
+        `;
+        tableBody.insertAdjacentHTML('beforeend', row);
+      });
+    }
+
+    // Sorting function
+    function sortTable(column) {
+      const icon = document.getElementById(`sort-icon-${column}`);
+      data.sort((a, b) => {
+        if (sortOrder[column] === 'asc') {
+          return a[column] > b[column] ? 1 : -1;
+        } else {
+          return a[column] < b[column] ? 1 : -1;
+        }
+      });
+      // Toggle sort order
+      sortOrder[column] = sortOrder[column] === 'asc' ? 'desc' : 'asc';
+      updateSortIcons(column);
+      renderTable(data);
+    }
+
+    // Update sorting icons
+    function updateSortIcons(column) {
+      const icons = document.querySelectorAll('.sort-icon');
+      icons.forEach(icon => icon.className = 'sort-icon'); // Reset all icons
+      const icon = document.getElementById(`sort-icon-${column}`);
+      icon.classList.add(sortOrder[column] === 'asc' ? 'up' : 'down');
+    }
+
+    // Show modal with user information
+    function showModal(name) {
+      document.getElementById('modal-text').innerText = `You clicked on the user: ${name}`;
+      document.getElementById('modal').style.display = 'flex';
+    }
+
+    // Close the modal
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    // Initial render of the table
+    renderTable(data);
+  </script>
+</body>
+</html>

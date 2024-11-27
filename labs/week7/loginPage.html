@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+      <h1 class="text-2xl font-bold text-center text-green-600 mb-4">
+        Login Form
+      </h1>
+      <hr class="mb-6" />
+
+      <form action="/submit-login" method="POST" class="space-y-6">
+        <div>
+          <label
+            for="username"
+            class="block text-lg font-semibold text-gray-700"
+            >Username or Email:</label
+          >
+          <input
+            type="text"
+            id="username"
+            name="username"
+            required
+            class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          />
+        </div>
+        <div>
+          <label
+            for="password"
+            class="block text-lg font-semibold text-gray-700"
+            >Password:</label
+          >
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          />
+        </div>
+
+        <a
+          type="submit"
+          class="w-full p-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
+          href="../week5/html/cvtask.html"
+        >
+          Login
+        </a>
+      </form>
+    </div>
+  </body>
+</html>
