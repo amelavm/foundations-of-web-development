@@ -68,7 +68,6 @@
     </form>
 
     <script>
-        // Fetch and display data in the table
         async function fetchData() {
             try {
                 const response = await fetch("lectures/data/students.json");
@@ -96,7 +95,6 @@
             }
         }
 
-        // Add new user to the table
         document.getElementById("add-user-form").addEventListener("submit", function (event) {
             event.preventDefault(); // Prevent form submission
 
@@ -113,13 +111,11 @@
             `;
             tableBody.appendChild(row);
 
-            // Clear input fields
             document.getElementById("user-id").value = "";
             document.getElementById("user-name").value = "";
             document.getElementById("user-email").value = "";
         });
 
-        // Call fetchData on page load
         fetchData();
     </script>
 </body>

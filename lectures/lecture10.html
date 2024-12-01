@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS Async</title>
+
+</head>
+<body>
+    <!--Long running synchronous example-->
+    <label for="quota">Number of primes:</label>
+    <input type="text" id="quota" name="quota" value="1000000" />
+
+    <button id="generate">Generate primes</button>
+    <button id="reload">Reload</button>
+
+    <div id="output"></div>
+
+
+    <!--Event handler example-->
+    <button id="xhr">Click to start request</button>
+    <button id="reload">Reload</button>
+
+    <pre readonly class="event-log"></pre>
+
+    <script>
+        //Synchronous programming example
+        function makeGreeting(name) {
+            return `Hello, my name is ${name}!`;
+        }
+
+        const name = "Miriam";
+        const greeting = makeGreeting(name);
+        console.log(greeting);
+
+        //Long-running synchronous function
+        const MAX_PRIME = 1000000;
+
+        function isPrime(n) {
+        for (let i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i === 0) {
+            return false;
+            }
+        }
+        return n > 1;
+        }
+
+        const random = (max) => Math.floor(Math.random() * max);
+
+        function generatePrimes(quota) {
+        const primes = [];
+        while (primes.length < quota) {
+            const candidate = random(MAX_PRIME);
+            if (isPrime(candidate)) {
+            primes.push(candidate);
+            }
+        }
+        return primes;
+        }
+
+        const quota = document.querySelector("#quota");
+        const output = document.querySelector("#output");
+
+        document.querySelector("#generate").addEventListener("click", () => {
+        const primes = generatePrimes(quota.value);
+        output.textContent = `Finished generating ${quota.value} primes!`;
+        });
+
+        document.querySelector("#reload").addEventListener("click", () => {
+        document.location.reload();
+        });
+
+        //Event handlers
+        const log = document.querySelector(".event-log");
+
+        document.querySelector("#xhr").addEventListener("click", () => {
+        log.textContent = "";
+
+        const xhr = new XMLHttpRequest();
+
+        xhr.addEventListener("loadend", () => {
+            log.textContent = `${log.textContent}Finished with status: ${xhr.status}`;
+        });
+
+        xhr.open(
+            "GET",
+            "https://raw.githubusercontent.com/mdn/content/main/files/en-us/_wikihistory.json",
+        );
+        xhr.send();
+        log.textContent = `${log.textContent}Started XHR request\n`;
+        });
+
+        document.querySelector("#reload").addEventListener("click", () => {
+        log.textContent = "";
+        document.location.reload();
+        });
+
+        //callbacks
+        let students = [{
+            name: "Harry potter",
+            house: "Gryffindor"
+        }, {
+            name: "Draco Malfoy",
+            house: "Slytherin"
+        }];
+
+        let newStudent = {
+            name: "Cedric Diggory",
+            house: "Hufflepuff"
+        };
+
+        //no callbacks
+        const addCharacter1 = (character) => {
+            setTimeout(() => {
+            students.push(character);
+            }, 1000);
+        }
+
+        const getListOfSortedStudents1 = (list) => {
+            list.forEach((student, index) => {
+            console.log(`${index + 1}. ${student.name} is added to ${student.house}`);
+            })
+        };
+
+        addCharacter1(newStudent);
+        getListOfSortedStudents1(students);
+
+        //callbacks
+        const addCharacter = (character, callback) => {
+            setTimeout(() => {
+            students.push(character);
+            callback(students);
+            }, 1000);
+        }
+
+        const getListOfSortedStudents = (list) => {
+            list.forEach((student, index) => {
+            console.log(`${index + 1}. ${student.name} is added to ${student.house}`);
+            })
+        };
+
+        addCharacter(newStudent, getListOfSortedStudents);
+
+        //callback hell
+        function doStep1(init, callback) {
+            const result = init + 1;
+            callback(result);
+        }
+
+        function doStep2(init, callback) {
+            const result = init + 2;
+            callback(result);
+        }
+
+        function doStep3(init, callback) {
+            const result = init + 3;
+            callback(result);
+        }
+
+        function doOperation() {
+            doStep1(0, (result1) => {
+                doStep2(result1, (result2) => {
+                doStep3(result2, (result3) => {
+                    console.log(`result: ${result3}`);
+                });
+                });
+            });
+        }
+
+        doOperation();
+
+        //using promises
+        const fetchPromise = fetch(
+            "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+        );
+
+        console.log(fetchPromise);
+
+        fetchPromise.then((response) => {
+            console.log(`Received response: ${response.status}`);
+        });
+
+        console.log("Started request…");
+
+        //chaining promises
+        const fetchPromise1 = fetch(
+                "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+            );
+
+        fetchPromise1.then((response) => response.json())
+        .then((data) => {
+            console.log(data[0].name);
+            data.forEach((data)=>console.log(data))
+        });
+
+        //checking response and catching errors
+        const fetchPromise2 = fetch(
+            "bad-scheme://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+        );
+
+        fetchPromise2
+            .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error: ${response.status}`);
+            }
+            return response.json();
+            })
+            .then((data) => {
+            console.log(data[0].name);
+            })
+            .catch((error) => {
+            console.error(`Could not get products: ${error}`);
+        });
+
+
+        //Combining promises
+        const fetchPromise4 = fetch(
+            "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+        );
+        const fetchPromise5 = fetch(
+            "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found",
+        );
+        const fetchPromise6 = fetch(
+            "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json",
+        );
+
+        Promise.all([fetchPromise4, fetchPromise5, fetchPromise6])
+            .then((responses) => {
+            for (const response of responses) {
+                console.log(`${response.url}: ${response.status}`);
+            }
+            })
+            .catch((error) => {
+            console.error(`Failed to fetch: ${error}`);
+        });
+
+        //Async and await
+        async function fetchProducts() {
+            const response = await fetch(
+            "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+            );
+            if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`);
+            }
+            const data = await response.json();
+            return data;
+        }
+
+        const promise = fetchProducts();
+        promise
+            .then((data) => {
+            console.log(data[0].name);
+            })
+            .catch((error) => {
+            console.error(`Could not get products: ${error}`);
+        });
+    
+    </script>
+
+    <!--Example1: Displaying user infomration in list-->
+    <h1>Users List</h1>
+    <ul id="user-list"></ul>
+
+    <script>
+        fetch("data/students.json")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json(); 
+            })
+            .then((data) => {
+                const userList = document.getElementById("user-list");
+                data.forEach((user) => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = `${user.name} (${user.email})`;
+                    userList.appendChild(listItem);
+                });
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+        });
+    </script>
+
+    <!--Example2: Displaying user infomration in list-->
+    <h1>User Cards</h1>
+    <div class="container" id="user-container"></div>
+
+    <script>
+        // Fetch and display data in cards
+        async function fetchData() {
+            try {
+                const response = await fetch("lectures/data/students.json");
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const container = document.getElementById("user-container");
+
+                // Create a card for each user
+                data.forEach((user) => {
+                    const card = document.createElement("div");
+                    card.className = "card";
+
+                    const name = document.createElement("h3");
+                    name.textContent = user.name;
+
+                    const email = document.createElement("p");
+                    email.textContent = user.email;
+
+                    card.appendChild(name);
+                    card.appendChild(email);
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            } finally {
+                console.log("Fetch operation complete.");
+            }
+        }
+
+        // Call the function
+        fetchData();
+    </script>
+
+</body>
+</html>
