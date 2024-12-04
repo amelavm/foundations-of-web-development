@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog - CV Creation Tool</title>
+    <!-- Tailwind CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap 5 CSS for Collapse Component -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Remove default padding and margin */
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .full-width-header {
+        background-color: #28a745; /* Bootstrap green */
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+        width: 100vw; /* Ensure full viewport width */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Full-Width Title Section -->
+    <div class="full-width-header">
+      <h1 class="font-bold text-3xl">CV Creation Tool Blog</h1>
+    </div>
+
+    <div class="mx-auto p-8 max-w-5xl">
+      <div id="blogContainer" class="gap-6 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Blog posts will be dynamically inserted here -->
+      </div>
+    </div>
+
+    <!-- Bootstrap 5 JS for Collapse -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript -->
+    <script>
+      // Blog data array
+      const blogPosts = [
+        {
+          title: "How to Create a Professional CV",
+          description:
+            "Learn the key steps in creating a professional CV that stands out to recruiters. Discover tips on layout, design, and content that will make your CV shine.",
+          fullContent:
+            "Creating a professional CV starts with a clean, organized layout. Avoid clutter and focus on making your information easy to read. Highlight your key achievements and tailor your CV to the job you're applying for.",
+        },
+        {
+          title: "Common CV Mistakes to Avoid",
+          description:
+            "Discover the most common CV mistakes that could cost you an interview. Learn how to avoid these pitfalls to ensure your CV is perfect.",
+          fullContent:
+            "One of the biggest mistakes is submitting a CV that is too long or too short. Strive for balance by keeping your CV concise but comprehensive. Also, be sure to proofread to avoid spelling errors!",
+        },
+        {
+          title: "How to Tailor Your CV for a Specific Job",
+          description:
+            "Tailoring your CV to fit a specific job posting is crucial. Find out how to highlight the skills and experience that are most relevant to the role you're applying for.",
+          fullContent:
+            "Review the job description carefully, then adjust your CV to emphasize the skills, experience, and qualifications that align with the job requirements. Customizing your CV can significantly improve your chances of landing an interview.",
+        },
+        {
+          title: "The Importance of a CV Summary",
+          description:
+            "A CV summary can be a powerful tool to catch the recruiter’s attention. Learn how to craft a compelling summary that showcases your best skills and experience.",
+          fullContent:
+            "Your CV summary should provide a quick snapshot of who you are and what you bring to the table. Focus on your strengths and the value you can provide to potential employers.",
+        },
+      ];
+
+      // Get the blog container element
+      const blogContainer = document.getElementById("blogContainer");
+
+      // Render the blog posts dynamically
+      blogPosts.forEach((post, index) => {
+        const blogCard = document.createElement("div");
+        blogCard.className =
+          "bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow p-6";
+
+        blogCard.innerHTML = `
+          <h3 class="font-semibold text-2xl text-gray-800">${post.title}</h3>
+          <p class="mt-2 text-gray-600">${post.description}</p>
+          <a
+            href="#collapsePost${index}"
+            class="inline-block mt-4 font-semibold text-blue-500 hover:text-blue-700"
+            data-bs-toggle="collapse"
+            aria-expanded="false"
+            aria-controls="collapsePost${index}"
+          >
+            Read More
+          </a>
+          <div class="collapse" id="collapsePost${index}">
+            <p class="mt-4 text-gray-600">${post.fullContent}</p>
+          </div>
+        `;
+
+        blogContainer.appendChild(blogCard);
+      });
+    </script>
+  </body>
+</html>

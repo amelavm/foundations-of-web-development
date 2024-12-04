@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template Suggestion</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Full-width blue header */
+    .full-width-header {
+      background-color: #007bff;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-bottom: 30px;
+    }
+
+    /* Card style for sections */
+    .skills-container, .suggested-templates {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .skills-container {
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      color: #333;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    /* Style for suggested template list */
+    .list-group-item {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .list-group-item.text-danger {
+      color: #dc3545;
+    }
+  </style>
+</head>
+<body>
+  <!-- Full-Width Header -->
+  <div class="full-width-header">
+    <h1>Template Suggestions Based on Skills</h1>
+  </div>
+
+  <div class="container">
+    <!-- Skill Selection Section -->
+    <div class="skills-container">
+      <h3>Select Your Skills:</h3>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="JavaScript" id="skillJavaScript">
+        <label class="form-check-label" for="skillJavaScript">JavaScript</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="HTML" id="skillHTML">
+        <label class="form-check-label" for="skillHTML">HTML</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="CSS" id="skillCSS">
+        <label class="form-check-label" for="skillCSS">CSS</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="React" id="skillReact">
+        <label class="form-check-label" for="skillReact">React</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="Photoshop" id="skillPhotoshop">
+        <label class="form-check-label" for="skillPhotoshop">Photoshop</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="Illustrator" id="skillIllustrator">
+        <label class="form-check-label" for="skillIllustrator">Illustrator</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="Sketch" id="skillSketch">
+        <label class="form-check-label" for="skillSketch">Sketch</label>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button class="btn btn-primary" onclick="suggestTemplates()">Suggest Templates</button>
+    </div>
+
+    <!-- Suggested Templates Section -->
+    <div class="mt-4 suggested-templates">
+      <h3>Suggested Templates:</h3>
+      <ul id="templateList" class="list-group"></ul>
+    </div>
+  </div>
+
+  <script>
+    const templates = {
+      "Developer": new Set(["JavaScript", "HTML", "CSS", "React"]),
+      "Designer": new Set(["Photoshop", "Illustrator", "Sketch"]),
+      "Full Stack": new Set(["JavaScript", "HTML", "CSS", "React", "Node.js"]),
+      "Frontend Developer": new Set(["HTML", "CSS", "JavaScript"]),
+      "Graphic Designer": new Set(["Photoshop", "Illustrator", "Sketch", "Figma"]),
+    };
+
+    function suggestTemplates() {
+      // Collect selected skills
+      const selectedSkills = new Set();
+      document.querySelectorAll('.form-check-input:checked').forEach(input => {
+        selectedSkills.add(input.value);
+      });
+
+      // Clear previous suggestions
+      const templateList = document.getElementById("templateList");
+      templateList.innerHTML = "";
+
+      // Find matching templates
+      for (const [template, skills] of Object.entries(templates)) {
+        const hasSkills = [...skills].some(skill => selectedSkills.has(skill));
+        if (hasSkills) {
+          // Add matching template to the list
+          const listItem = document.createElement("li");
+          listItem.className = "list-group-item";
+          listItem.textContent = template;
+          templateList.appendChild(listItem);
+        }
+      }
+
+      // If no templates match, show a message
+      if (templateList.children.length === 0) {
+        const listItem = document.createElement("li");
+        listItem.className = "list-group-item text-danger";
+        listItem.textContent = "No matching templates found. Please select more skills.";
+        templateList.appendChild(listItem);
+      }
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

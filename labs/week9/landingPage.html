@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Creator Tool</title>
+  <link href="assets/css/mystyles.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .session-timer {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+    .modal-header {
+      background-color: #007bff;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="bg-primary navbar navbar-custom navbar-dark navbar-expand-lg">
+  <a class="navbar-brand" href="#">CV Creator Tool</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="me-auto navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="#landingPage.html">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="#products">Features</a></li>
+      <li class="nav-item"><a class="nav-link" href="pricingPage.html">Pricing</a></li>
+      <li class="nav-item"><a class="nav-link" href="#footer">Contact Us</a></li>
+    </ul>
+    <button class="btn btn-danger" id="signOutButton">Sign Out</button>
+  </div>
+</nav>
+
+<div class="bg-light">
+<!-- Main Content -->
+<div class="my-5 text-center container">
+  <h1 class="mb-4">Welcome to CV Creator Tool</h1>
+  <h2 class="section-heading">Create, Customize, and Download Professional CVs in Minutes</h2>
+  <hr class="my-4">
+  
+  <div class="mb-5 text-center">
+    <a href="#" class="btn btn-lg btn-success">Create Your CV Now!</a>
+  </div>
+
+  <!-- Session Timer -->
+  <p class="session-timer" id="sessionTimer">Session Duration: 00:00:00</p>
+
+  <!-- Products Section -->
+  <div id="products">
+    <div class="mb-5 row">
+      <div class="col-md-4">
+        <div class="text-center card">
+          <div class="card-body">
+            <h5 class="card-title">AI Plagiarism Checker</h5>
+            <p class="card-text">Ensure originality with AI-powered plagiarism checks.</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="text-center card">
+          <div class="card-body">
+            <h5 class="card-title">Top 10 Interview Questions</h5>
+            <p class="card-text">Prepare confidently with curated interview questions.</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="text-center card">
+          <div class="card-body">
+            <h5 class="card-title">Template Library</h5>
+            <p class="card-text">Choose from a wide variety of CV templates.</p>
+            <a href="#" class="btn btn-primary">Explore Templates</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Sign Out Modal -->
+<div class="fade modal" id="signOutModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Session Summary</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p id="sessionSummary"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="confirmSignOutButton">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer id="footer" class="text-center footer">
+  <div class="container">
+    <p>&copy; 2024 CV Creator Tool. All rights reserved.</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+      <li class="list-inline-item"><a href="#">Terms of Service</a></li>
+      <li class="list-inline-item"><a href="#">Contact Us</a></li>
+    </ul>
+    <ul id="footerID" class="list-inline">
+        <li><b>Contact: </b>+38761234567</li>
+        <li><b>Email: </b>something@gmail.com</li>
+        <li><b>Work Hours: </b>8:00 - 16:00 (Workdays only!)</li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  let sessionStartTime = new Date();
+  let sessionTimerInterval;
+
+  // Update session timer every second
+  function updateSessionTimer() {
+    const now = new Date();
+    const duration = new Date(now - sessionStartTime);
+    const hours = String(duration.getUTCHours()).padStart(2, '0');
+    const minutes = String(duration.getUTCMinutes()).padStart(2, '0');
+    const seconds = String(duration.getUTCSeconds()).padStart(2, '0');
+    document.getElementById('sessionTimer').textContent = `Session Duration: ${hours}:${minutes}:${seconds}`;
+  }
+
+  // Show session summary in modal
+  document.getElementById('signOutButton').addEventListener('click', () => {
+    clearInterval(sessionTimerInterval);
+    const now = new Date();
+    const sessionDuration = new Date(now - sessionStartTime);
+    const hours = String(sessionDuration.getUTCHours()).padStart(2, '0');
+    const minutes = String(sessionDuration.getUTCMinutes()).padStart(2, '0');
+    const seconds = String(sessionDuration.getUTCSeconds()).padStart(2, '0');
+    document.getElementById('sessionSummary').textContent = `Your session lasted: ${hours}:${minutes}:${seconds}`;
+    const signOutModal = new bootstrap.Modal(document.getElementById('signOutModal'));
+    signOutModal.show();
+  });
+
+  // Redirect to login page after signing out
+  document.getElementById('confirmSignOutButton').addEventListener('click', () => {
+    window.location.href = 'loginPage.html';
+  });
+
+  // Start the session timer
+  sessionTimerInterval = setInterval(updateSessionTimer, 1000);
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="bg-primary navbar navbar-dark navbar-expand-lg">
+    <a class="navbar-brand" href="#">CV Creator Tool</a>
+    <div class="collapse navbar-collapse">
+      <ul class="me-auto navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Pricing Table -->
+  <div class="my-5 container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price per Piece ($)</th>
+          <th>Amount</th>
+          <th>Current Price ($)</th>
+        </tr>
+      </thead>
+      <tbody id="pricingTable">
+        <tr>
+          <td>Top 10 Interview Questions</td>
+          <td>5</td>
+          <td><input type="number" min="0" class="form-control" oninput="updatePrice(this, 5)"></td>
+          <td class="price">0</td>
+        </tr>
+        <tr>
+          <td>Best CV Tricks</td>
+          <td>10</td>
+          <td><input type="number" min="0" class="form-control" oninput="updatePrice(this, 10)"></td>
+          <td class="price">0</td>
+        </tr>
+        <tr>
+          <td>AI Plagiarism Check</td>
+          <td>15</td>
+          <td><input type="number" min="0" class="form-control" oninput="updatePrice(this, 15)"></td>
+          <td class="price">0</td>
+        </tr>
+        <tr>
+          <td>Professional Resume Templates</td>
+          <td>20</td>
+          <td><input type="number" min="0" class="form-control" oninput="updatePrice(this, 20)"></td>
+          <td class="price">0</td>
+        </tr>
+        <tr>
+          <td>Mock Interview Sessions</td>
+          <td>25</td>
+          <td><input type="number" min="0" class="form-control" oninput="updatePrice(this, 25)"></td>
+          <td class="price">0</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary" onclick="calculateTotal()">Buy</button>
+  </div>
+
+  <!-- Modal -->
+  <div class="fade modal" id="totalModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Total Price</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p id="totalPrice">0</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text">
+    <div class="text-center container">
+      <p>&copy; 2024 CV Creator Tool. All rights reserved.</p>
+      <ul class="list-unstyled">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+      <p>Contact: +38761234567 | Email: something@gmail.com</p>
+      <p>Work Hours: 8:00 - 16:00</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function updatePrice(input, pricePerPiece) {
+      const amount = parseInt(input.value) || 0;
+      const currentPriceCell = input.closest('tr').querySelector('.price');
+      currentPriceCell.textContent = (amount * pricePerPiece).toFixed(2);
+    }
+
+    function calculateTotal() {
+      const prices = document.querySelectorAll('.price');
+      let total = 0;
+      let count = 0;
+
+      prices.forEach(priceCell => {
+        const price = parseFloat(priceCell.textContent);
+        total += price;
+        if (price > 0) {
+          count++; // Count the number of non-zero prices
+        }
+      });
+
+      const average = count > 0 ? total / count : 0; // Calculate average price
+      const roundedUp = Math.ceil(average);         // Round up
+      const roundedDown = Math.floor(average);      // Round down
+
+      // Display the results in the modal
+      document.getElementById('totalPrice').innerHTML = `
+        <p>Total: $${total.toFixed(2)}</p>
+        <p>Average Price: $${average.toFixed(2)}</p>
+        <p>Average Price (Rounded Up): $${roundedUp}</p>
+        <p>Average Price (Rounded Down): $${roundedDown}</p>
+      `;
+
+      const modal = new bootstrap.Modal(document.getElementById('totalModal'));
+      modal.show();
+    }
+  </script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
