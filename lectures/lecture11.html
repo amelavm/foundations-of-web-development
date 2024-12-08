@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS Routing</title>
+</head>
+
+<body>
+    <!--First example, simple client side routing-->
+    <button onclick="window.router('/')">Home page</button>
+    <button onclick="window.router('/contact-us')">Contact us</button>
+    <div id="root">
+
+    </div>
+
+    <script>
+      const routes=[
+        {
+            path:"/",
+            template: "<h1>This is home page.</h1>"
+        },
+        {
+            path:"/contact-us",
+            template: "<h1>This is contact us page.</h1>"
+        }
+      ];
+
+      const router = (path) => {
+        window.history.pushState({}, " ", path);
+
+        routes.forEach((route)=>{
+            if (route.path ===path) {
+                document.getElementById("root").innerHTML = route.template;
+            }
+        })
+      };
+
+      window.router=router;
+
+    </script>
+
+
+    <!--Second example, using AJAX with Client-side routing-->
+    <nav>
+        <a href="/home" data-link>Home</a>
+        <a href="/students" data-link>Students</a>
+        <a href="/about" data-link>About</a>
+      </nav>
+      <div id="app">Loading...</div>
+    
+      <script>
+        const routes2 = {
+          '/home': () => '<h1>Home Page</h1><p>Welcome to our application!</p>',
+          '/about': () => '<h1>About Page</h1><p>This is a demo of client-side routing with AJAX.</p>',
+          '/students': fetchStudents, 
+        };
+    
+        async function fetchStudents() {
+          try {
+            const response = await fetch('lectures/data/students.json');
+            const students = await response.json();
+            return `
+              <h1>Students List</h1>
+              <ul>
+                ${students.map(student => `<li>${student.name} (Age: ${student.age})</li>`).join('')}
+              </ul>
+            `;
+          } catch (error) {
+            return '<p>Error loading students data.</p>';
+          }
+        }
+    
+        function navigateTo(url) {
+          history.pushState(null, null, url); 
+          renderPage(); 
+        }
+    
+        async function renderPage() {
+          const path = window.location.pathname;
+          const routeHandler = routes2[path] || (() => '<h1>404: Page Not Found</h1>');
+          const content = await routeHandler(); 
+          document.getElementById('app').innerHTML = content;
+    
+          updateActiveLink();
+        }
+    
+        function updateActiveLink() {
+          document.querySelectorAll('[data-link]').forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === window.location.pathname);
+          });
+        }
+    
+        document.querySelectorAll('[data-link]').forEach(link => {
+          link.addEventListener('click', event => {
+            event.preventDefault(); 
+            const url = event.target.getAttribute('href');
+            navigateTo(url);
+          });
+        });
+    
+        window.onpopstate = renderPage;
+    
+        renderPage();
+      </script>
+</body>
+</html>
+
+
