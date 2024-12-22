@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://html5-templates.com/" />
+    <title>Responsive HTML5 Page Layout Template</title>
+    <meta name="description" content="Simple HTML5 Page layout template with header, footer, sidebar etc.">
+
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/spapp.css">
+
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/jquery.spapp.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <nav role="navigation">
+            <ul>
+                <li><a href="#page1">page 1</a>
+                <li><a href="#page2">page 2</a>
+                <li><a href="#page3">page 3</a>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="pageContent">
+        <main id="spapp" role="main">
+            <section id="page1" data-load="page1.html">
+                <h1>Page 1</h1>
+            </section>
+            <section id="page2" data-load="page2.html">
+                <h1>Page 2</h1>
+            </section>
+            <section id="page3" data-load="page3.html">
+                <h1>Page 3</h1>
+            </section>
+        </main>
+    </section>
+    <footer>
+        <p>&copy; You can copy, edit and publish this template but please leave a link to our website | <a href="https://html5-templates.com/" target="_blank" rel="nofollow">HTML5 Templates</a></p>
+        <address>
+			Contact: <a href="mailto:me@example.com">Mail me</a>
+		</address>
+    </footer>
+
+
+    <script>
+        var app = $.spapp({
+            defaultView: "#page1",
+            templateDir: "./views/"
+
+        });
+
+
+        app.run();
+    </script>
+</body>
+
+</html>
