@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic & Nested Routing</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #eaeef3;
+    }
+    header {
+      background: #444;
+      color: #fff;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    nav {
+      background: #222;
+      color: white;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    nav a:hover {
+      background: #575757;
+    }
+    #app {
+      padding: 20px;
+      text-align: center;
+    }
+    footer {
+      background: #444;
+      color: white;
+      text-align: center;
+      padding: 10px 20px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Dynamic & Nested Routing Example</h1>
+  </header>
+  <nav>
+    <a href="/" data-link>Home</a>
+    <a href="/dashboard" data-link>Dashboard</a>
+    <a href="/user/123" data-link>User Profile</a>
+  </nav>
+  <main id="app">
+    <h2>Welcome to the Home Page</h2>
+  </main>
+  <footer>
+    <p>&copy; 2024 Client-Side Routing</p>
+  </footer>
+
+  <script>
+    const routes = {
+      '/': '<h2>Welcome to the Home Page</h2>',
+      '/dashboard': {
+        '/': '<h2>Dashboard Home</h2><p>Choose an option:</p><ul><li>Settings</li><li>Profile</li></ul>',
+        '/settings': '<h2>Settings Page</h2>',
+        '/profile': '<h2>User Profile Page</h2>',
+      },
+      '/user/:id': (id) => `<h2>User Profile</h2><p>Viewing profile for user ID: ${id}</p>`,
+    };
+
+    function router() {
+      const path = window.location.pathname;
+      if (path.startsWith('/user/')) {
+        const id = path.split('/')[2];
+        document.getElementById('app').innerHTML = routes['/user/:id'](id);
+      } else if (path.startsWith('/dashboard')) {
+        const subPath = path.replace('/dashboard', '') || '/';
+        document.getElementById('app').innerHTML =
+          routes['/dashboard'][subPath] || '<h2>404 - Dashboard Not Found</h2>';
+      } else {
+        document.getElementById('app').innerHTML = routes[path] || '<h2>404 - Page Not Found</h2>';
+      }
+    }
+
+    function handleNavigation(e) {
+      if (e.target.matches('[data-link]')) {
+        e.preventDefault();
+        window.history.pushState({}, '', e.target.href);
+        router();
+      }
+    }
+
+    window.addEventListener('popstate', router);
+    document.addEventListener('click', handleNavigation);
+
+    router();
+  </script>
+</body>
+</html>

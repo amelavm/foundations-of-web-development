@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Static Routing</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+    }
+    header {
+      background: #0078d7;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    nav {
+      background: #333;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 5px 10px;
+      transition: background 0.3s;
+    }
+    nav a:hover {
+      background: #575757;
+      border-radius: 4px;
+    }
+    #app {
+      padding: 20px;
+      text-align: center;
+    }
+    footer {
+      background: #0078d7;
+      color: white;
+      text-align: center;
+      padding: 10px 20px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Static Routing Example</h1>
+  </header>
+  <nav>
+    <a href="/" data-link>Home</a>
+    <a href="/about" data-link>About</a>
+    <a href="/contact" data-link>Contact</a>
+  </nav>
+  <main id="app">
+    <h2>Welcome to the Home Page</h2>
+  </main>
+  <footer>
+    <p>&copy; 2024 Client-Side Routing</p>
+  </footer>
+
+  <script>
+    const routes = {
+      '/': '<h2>Welcome to the Home Page</h2>',
+      '/about': '<h2>About Us</h2><p>This is the about page of our site.</p>',
+      '/contact': '<h2>Contact Us</h2><p>Feel free to reach out!</p>',
+    };
+
+    function router() {
+      const path = window.location.pathname;
+      const content = routes[path] || '<h2>404 - Page Not Found</h2>';
+      document.getElementById('app').innerHTML = content;
+    }
+
+    function handleNavigation(e) {
+      if (e.target.matches('[data-link]')) {
+        e.preventDefault();
+        window.history.pushState({}, '', e.target.href);
+        router();
+      }
+    }
+
+    window.addEventListener('popstate', router);
+    document.addEventListener('click', handleNavigation);
+
+    router();
+  </script>
+</body>
+</html>

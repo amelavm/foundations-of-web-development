@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breadcrumbs with Routing</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <div class="container mx-auto p-4">
+    <!-- Title -->
+    <h2 class="text-3xl font-bold text-green-600 mb-6">Foundations of Web Dev</h2>
+
+    <!-- Topics List -->
+    <div class="topics bg-white shadow rounded p-4">
+      <ol class="list-decimal pl-6 space-y-4">
+        <li>
+          <a href="/labs/week11/breadcrumbs/searching" data-link class="text-blue-500 hover:underline font-bold">Searching</a>
+          <ul class="list-disc pl-8 space-y-2">
+            <li><a href="/labs/week11/breadcrumbs/searching/linear" data-link class="text-blue-500 hover:underline">Linear Search</a></li>
+            <li><a href="/labs/week11/breadcrumbs/searching/binary" data-link class="text-blue-500 hover:underline">Binary Search</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="/labs/week11/breadcrumbs/sorting" data-link class="text-blue-500 hover:underline font-bold">Sorting</a>
+          <ul class="list-disc pl-8 space-y-2">
+            <li><a href="/labs/week11/breadcrumbs/sorting/bubble" data-link class="text-blue-500 hover:underline">Bubble Sort</a></li>
+            <li>
+              <a href="/labs/week11/breadcrumbs/sorting/merge" data-link class="text-blue-500 hover:underline">Merge Sort</a>
+              <ul class="list-disc pl-8 space-y-2">
+                <li><a href="/labs/week11/breadcrumbs/sorting/merge/recursive" data-link class="text-blue-500 hover:underline">Recursive Merge Sort</a></li>
+                <li><a href="/labs/week11/breadcrumbs/sorting/merge/iterative" data-link class="text-blue-500 hover:underline">Iterative Merge Sort</a></li>
+              </ul>
+            </li>
+            <li><a href="/labs/week11/breadcrumbs/sorting/selection" data-link class="text-blue-500 hover:underline">Selection Sort</a></li>
+            <li><a href="/labs/week11/breadcrumbs/sorting/insertion" data-link class="text-blue-500 hover:underline">Insertion Sort</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="/labs/week11/breadcrumbs/tree" data-link class="text-blue-500 hover:underline font-bold">Tree</a>
+          <ul class="list-disc pl-8 space-y-2">
+            <li><a href="/labs/week11/breadcrumbs/tree/binary" data-link class="text-blue-500 hover:underline">Binary Tree</a></li>
+            <li><a href="/labs/week11/breadcrumbs/tree/binary-search" data-link class="text-blue-500 hover:underline">Binary Search Tree</a></li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+
+    <!-- Breadcrumbs -->
+    <nav id="breadcrumbs" class="flex items-center text-sm text-gray-600 mt-6">
+      <!-- Breadcrumbs will be dynamically populated -->
+    </nav>
+
+    <!-- Content Area -->
+    <div id="app" class="mt-4 p-4 bg-white shadow rounded">
+      <!-- Page content will be dynamically rendered here -->
+    </div>
+  </div>
+
+  <script src="router.js" defer></script>
+</body>
+</html>
