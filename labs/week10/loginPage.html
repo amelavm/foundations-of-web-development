@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      margin-top: 100px;
+    }
+    .modal-header {
+      background-color: #007bff;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="bg-primary navbar navbar-dark navbar-expand-lg">
+    <a class="navbar-brand" href="#">CV Creator Tool</a>
+  </nav>
+
+  <!-- Login Form -->
+  <div class="container">
+    <div class="mx-auto card" style="max-width: 400px;">
+      <div class="bg-primary text-center text-white card-header">
+        <h3>User Login</h3>
+      </div>
+      <div class="card-body">
+        <form id="loginForm">
+          <div class="mb-3">
+            <label for="username" class="form-label">Username:</label>
+            <input type="text" class="form-control" id="username" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="password" required>
+          </div>
+          <button type="button" class="btn btn-success" id="loginButton">
+             Login
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Session Modal -->
+  <div class="fade modal" id="sessionModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Session Information</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="sessionStart"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="startSessionButton" data-bs-dismiss="modal">Start Session</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loginButton = document.getElementById('loginButton');
+      const sessionModal = new bootstrap.Modal(document.getElementById('sessionModal'));
+
+      loginButton.addEventListener('click', () => {
+        startSubmissionCountdown(5, () => {
+          // Get the current date and time
+          const now = new Date();
+          const sessionStartText = `Your session will start at: ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+          
+          // Populate the modal with session start information
+          document.getElementById('sessionStart').textContent = sessionStartText;
+
+          // Show the modal
+          sessionModal.show();
+        });
+      });
+
+      document.getElementById('startSessionButton').addEventListener('click', () => {
+        // Redirect to the landing page after closing the modal
+        window.location.href = 'landingPage.html';
+      });
+    });
+
+    function startSubmissionCountdown(duration, callback) {
+      let timeLeft = duration;
+      const countdownElement = document.createElement("p");
+      countdownElement.id = "countdown";
+      countdownElement.style.textAlign = "center";
+      countdownElement.style.marginTop = "10px";
+
+      const formContainer = document.getElementById("loginForm").parentElement;
+      formContainer.appendChild(countdownElement);
+
+      const interval = setInterval(() => {
+        countdownElement.textContent = `Time left: ${timeLeft} seconds`;
+        timeLeft--;
+
+        if (timeLeft < 0) {
+          clearInterval(interval);
+          formContainer.removeChild(countdownElement);
+          callback();
+        }
+      }, 1000);
+    }
+  </script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loginButton = document.getElementById('loginButton');
+      const sessionModal = new bootstrap.Modal(document.getElementById('sessionModal'));
+  
+      loginButton.addEventListener('click', () => {
+        startSubmissionCountdown(5, () => {
+          // Get the current date and time
+          const now = new Date();
+          const sessionStartText = `Your session will start at: ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+          
+          // Populate the modal with session start information
+          document.getElementById('sessionStart').textContent = sessionStartText;
+  
+          // Show the modal
+          sessionModal.show();
+        });
+      });
+  
+      document.getElementById('startSessionButton').addEventListener('click', () => {
+        // Redirect to the landing page after closing the modal
+        window.location.href = 'landingPage.html';
+      });
+    });
+  
+    // Function to implement the countdown timer
+    function startSubmissionCountdown(duration, callback) {
+      let timeLeft = duration;
+      const countdownElement = document.createElement("p");
+      countdownElement.id = "countdown";
+      countdownElement.style.textAlign = "center";
+      countdownElement.style.marginTop = "10px";
+  
+      const formContainer = document.getElementById("loginForm").parentElement;
+      formContainer.appendChild(countdownElement);
+  
+      const interval = setInterval(() => {
+        countdownElement.textContent = `Time left: ${timeLeft} seconds`;
+        timeLeft--;
+  
+        if (timeLeft < 0) {
+          clearInterval(interval);
+          formContainer.removeChild(countdownElement);
+          callback(); // Trigger the callback once the countdown ends
+        }
+      }, 1000);
+    }
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

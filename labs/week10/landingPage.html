@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Creator Tool</title>
+  <link href="../week6/assets/css/mystyles.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-custom">
+  <a class="navbar-brand" href="#">CV Creator Tool</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item"><a class="nav-link" href="#landingPage.html">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="#products">Features</a></li>
+      <li class="nav-item"><a class="nav-link" href="../week6/pricingPage.html">Pricing</a></li>
+      <li class="nav-item"><a class="nav-link" href="#footer">Contact Us</a></li>
+    </ul>
+    <button class="btn btn-outline-light me-2">Sign In</button>
+    <button class="btn btn-primary btn-outline-light me-3" onclick="window.location.href='registerPage.html'">Register</button>
+    <button class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#notificationModal">
+        <i class="bi bi-bell"></i> Notifications
+      </button>
+  </div>
+</nav>
+
+<div class="bg-light">
+<!-- Main Content -->
+<div class="container my-5 text-center">
+  <h1 class="mb-4">Welcome to CV Creator Tool</h1>
+  <h2 class="section-heading">Create, Customize, and Download Professional CVs in Minutes</h2>
+  <hr class="my-4">
+  
+  <div class="text-center mb-5">
+    <a href="#" class="btn btn-success btn-lg">Create Your CV Now!</a>
+  </div>
+  <div class="text-center mb-5">
+    <a href="#" class="btn btn-success btn-lg">Create Your CV Now!</a>
+    <button class="btn btn-info btn-lg" onclick="openRemoteJobs()">View Remote Jobs</button>
+  </div>
+  
+  <!-- Container for job listings if needed -->
+  <div id="jobs-container" class="mt-5"></div>
+
+  <!-- Products Section -->
+<div id = "products">
+  <div class="row mb-5">
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">AI Plagiarism Checker</h5>
+          <p class="card-text">Ensure originality with AI-powered plagiarism checks.</p>
+          <a href="#" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Top 10 Interview Questions</h5>
+          <p class="card-text">Prepare confidently with curated interview questions.</p>
+          <a href="#" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Template Library</h5>
+          <p class="card-text">Choose from a wide variety of CV templates.</p>
+          <a href="#" class="btn btn-primary">Explore Templates</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- About Section -->
+  <h2 class="section-heading">About CV Creator Tool</h2>
+  <hr class="my-4">
+  <p class="text-success mb-5">
+    CV Creator Tool is your go-to platform for building professional resumes. With a wide range of customizable templates, AI-powered tools, and expert resources,
+    we help you stand out in the job market. Get ready to create a stunning CV that highlights your skills and achievements effortlessly.
+  </p>
+
+  <h2 class="section-heading">Frequently Asked Questions</h2>
+  <hr class="my-4">
+  <div id="accordion">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Question #1: <b>Subscription Deadline</b>
+          </button>
+        </h5>
+      </div>
+  
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body">
+          You can cancel your subscription any time.
+
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Question #2: <b>Who can apply?</b>
+          </button>
+        </h5>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+            Anybody can apply, you dont have to be a student.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingThree">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Question #3: <b>How to apply?</b>
+          </button>
+        </h5>
+      </div>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+        <div class="card-body">
+Apply by following instructions through email.        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-4">
+
+  <h2 class="section-heading">Check out Different Notification Types</h2>
+  <hr class="my-4">
+  <div class="btn-group-vertical">
+      <button type="button" class="btn btn-outline-primary btn-sm">
+        Noitification 1
+      </button>
+      <button type="button" class="btn btn-danger btn-sm" disabled>
+        Notification 2 (Disabled)
+      </button>
+      <button type="button" class="btn btn-success btn-lg active" aria-pressed="true">
+        Noitification 3
+      </button>
+  </div>
+
+  <hr class="my-4">
+  <!-- Location Section with Embedded Map -->
+  <h2 class="section-heading">Our Location</h2>
+  <hr class="my-4">
+  <div class="mb-5">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d92005.32922462502!2d18.300591302932418!3d43.893817403784674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4758cbb1ed719bd1%3A0x562ecda6de87b33e!2sSarajevo!5e0!3m2!1shr!2sba!4v1730463334417!5m2!1shr!2sba" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</div>
+</div>
+
+
+<!-- Footer -->
+<footer id = "footer" class="footer text-center">
+  <div class="container">
+    <p>&copy; 2024 CV Creator Tool. All rights reserved.</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+      <li class="list-inline-item"><a href="#">Terms of Service</a></li>
+      <li class="list-inline-item"><a href="#">Contact Us</a></li>
+    </ul>
+    <ul id = "footerID" class="list-inline">
+        <li><b>Contact: </b>+38761234567</li>
+        <li><b>Email: </b>something@gmail.com</li>
+        <li><b>Work Hours: </b> 8:00 - 16:00 (Workdays only!)</li>
+      </ul>
+  </div>
+</footer>
+
+<!-- Notification Modal -->
+<div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Notifications</h3>      
+        </div>
+        <div class="modal-body">
+          <p>You have no new notifications at this time.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // JavaScript for opening a new tab and fetching remote jobs
+    async function fetchJobListings() {
+      try {
+        const response = await fetch('https://remoteok.com/api');
+  
+        if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+    
+        const jobs = await response.json();
+        const container = document.getElementById("jobs-container");
+    
+        jobs.forEach(job => {
+          const card = document.createElement("div");
+          card.className = "job-card card mb-3";
+          card.style = "padding: 15px; border: 1px solid #ddd;";
+          card.innerHTML = `
+            <h4>${job.title}</h4>
+            <p><strong>Company:</strong> ${job.company}</p>
+            <p><strong>Description:</strong> ${job.description}</p>
+            <a href="${job.url}" target="_blank" class="btn btn-primary">Apply Now</a>
+          `;
+          container.appendChild(card);
+        });
+      } catch (error) {
+        console.error("Error fetching job listings:", error);
+        document.getElementById("jobs-container").textContent = "Failed to load job listings.";
+      }
+    }
+  
+    // Function to open remote jobs site in a new tab
+    function openRemoteJobs() {
+      window.open('https://remoteok.com', '_blank');
+    }
+  
+  </script>
+</body>
+</html>
